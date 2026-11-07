@@ -1,0 +1,205 @@
+[general]
+height = 7 # the total lines that otter-launcher should occupy; 0 to be fullscreen
+empty_module = "app" # module to run with an empty prompt
+default_module = "open" # module to run when no module is matched
+alternative_module = "goto" # module to run with alt+enter
+control_module = "" # module to run with ctrl+enter
+exec_cmd = "sh -c" # your chosen shell, eg. "zsh -c" for zsh
+vi_mode = true # true for vi keybinds, false emacs keybinds
+cheatsheet_entry = "?" # the key to show configured modules
+cheatsheet_viewer = "less -R; clear" # command to show cheatsheet; through piping stdout
+external_editor = "vi" # ctrl+x ctrl+e (or v in vi normal mode)
+
+
+[interface]
+# options for the layout
+padding = [0, 1, 0, 1] # pad with columns/lines, [top, right, down, left]
+# use three quotes to write longer codes; ANSI color codes and shell expansion are allowed
+header = """
+\x1b[1;38;2;203;166;247m$USER@nixos\x1b[0m
+"""
+# available [color options](https://docs.rs/ratatui/latest/ratatui/prelude/enum.Color.html)
+header_color = "blue"
+# options for input field
+prompt_sign = "> "
+prompt_sign_color = "blue"
+placeholder = "type & search"
+placeholder_color = "black"
+# options for selectable suggestions
+suggestion_mode = "list" # available options: list, hint
+suggestion_position = "bottom" # to the input field; options: top, bottom
+prefix_color = "yellow"
+prefix_padding = 3 # pad with spaces to have uniformed width
+description_color = "reset"
+selection_prefix = "▌ " # shown for the selected
+selection_prefix_color = "red"
+inverse_selection = true # highlight the selected
+list_prefix = "  " # shown for the not selected
+list_prefix_color = "reset"
+indicator_args = "" # shown for modules taking arguments
+indicator_bare = "" # for those not taking arguments
+indicator_color = "red"
+scrollbar = true
+# options for separator
+separator = true # draw a line between intput field and suggestion list; only affect list mode
+separator_label = "  otter "
+
+
+[image]
+format = "kitty" # graphics protocols to use; options: kitty, sixel, iterm2, symbol
+path = "~/.config/otter-launcher/cat.png" # path to the image file
+width = 12 # the size of image; count columns for horizontal layout, lines for vertical layout
+position = "left" # image placement; options: left, right, top, bottom
+padding = [0, 0, 0, 0] # [top, right, down, left]
+
+
+# modules are defined as followed
+[[modules]]
+description = "internet search"
+prefix = "gs"
+cmd = "xdg-open https://duckduckgo.com/?q={}"
+# if with_argument is true, {} in cmd will be replaced with user input. if not explicitly set, taken as false.
+with_argument = true
+# url_encode should be true when calling webpages; this ensures special characters in url being readable to browsers; taken as false if not explicitly set
+url_encode = true
+# run cmd in a forked shell as opposed to as a child process (simply by prepending setsid -f to the configured cmd); useful for launching gui programs; taken as false if not explicitly set
+unbind_proc = true
+
+[[modules]]
+description = "programs"
+prefix = "app"
+cmd = """
+umbriel msg window-set-primary-extent 0.365;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+fsel -d
+"""
+
+[[modules]]
+description = "bluetooth"
+prefix = "bt"
+cmd = """
+umbriel msg window-set-primary-extent 0.365;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+bluetui
+"""
+
+[[modules]]
+description = "audio"
+prefix = "au"
+cmd = """
+umbriel msg window-set-primary-extent 0.365;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+wiremix
+"""
+
+[[modules]]
+description = "wifi"
+prefix = "wi"
+cmd = """
+umbriel msg window-set-primary-extent 0.365;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+nmtui
+"""
+
+[[modules]]
+description = "Notes"
+prefix = "no"
+cmd = """
+umbriel msg window-set-primary-extent 0.6;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+cd ~/Sync/Notes/;
+nvim
+"""
+
+[[modules]]
+description = "Nixos rebuild"
+prefix = "nos"
+cmd = """
+umbriel msg window-set-primary-extent 0.365;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+umbriel msg window-toggle-pinned;
+nh os switch
+"""
+
+[[modules]]
+description = "Nixos gc"
+prefix = "ncl"
+cmd = """
+
+umbriel msg window-set-primary-extent 0.365;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+umbriel msg window-toggle-pinned;
+nh clean all
+"""
+
+
+[[modules]]
+description = "flake update"
+prefix = "nou"
+cmd = """
+umbriel msg window-set-primary-extent 0.365;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+umbriel msg window-toggle-pinned;
+nix flake update --flake ~/Nix-conf; and nh os switch
+"""
+
+[[modules]]
+description = "clipboard history"
+prefix = "ch"
+cmd = """
+umbriel msg window-set-primary-extent 0.365;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+cliphist list | fsel --dmenu --delimiter $'\t' --with-nth 2 | cliphist decode | wl-copy >/dev/null 2>&1
+"""
+
+[[modules]]
+description = "clipboard history wipe"
+prefix = "chw"
+cmd = """
+cliphist wipe
+"""
+
+[[modules]]
+description = "run commands"
+prefix = "sh"
+cmd = """
+$(printf $TERM | sed 's/xterm-//g') -e sh -c "{}"
+"""
+with_argument = true
+unbind_proc = true
+
+[[modules]]
+description = "search nixpkgs"
+prefix = "ns"
+cmd = "xdg-open https://mynixos.com/search?q={}"
+with_argument = true
+url_encode = true
+unbind_proc = true
+
+[[modules]]
+description = "search nixwiki"
+prefix = "nw"
+cmd = "xdg-open https://wiki.nixos.org/w/index.php?search={}"
+with_argument = true
+url_encode = true
+unbind_proc = true
+
+[[modules]]
+description = "yazi"
+prefix = "ya"
+cmd = """
+umbriel msg window-set-primary-extent 0.6;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+yazi {}
+"""
+with_argument = true

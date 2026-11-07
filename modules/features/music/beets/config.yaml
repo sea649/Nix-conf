@@ -1,0 +1,77 @@
+%YAML 1.1
+---
+directory: /home/sea/Music
+embedart:
+  auto: true
+  maxwidth: 1200
+fetchart:
+  auto: true
+  maxwidth: 1200
+  minwidth: 300
+  quality: 90
+  sources:
+  - filesystem
+  - coverart
+  - itunes
+  - amazon
+  - albumart
+  - cover_art_url
+fromfilename:
+  auto: false
+ftintitle:
+  auto: true
+  drop: false
+  format: feat. {}
+import:
+  autotag: true
+  bell: false
+  copy: true
+  detail: false
+  duplicate_action: skip
+  incremental: false
+  log: /home/sea/.config/beets/import.log
+  move: false
+  none_rec_action: ask
+  quiet: false
+  quiet_fallback: skip
+  resume: ask
+  timid: false
+  write: true
+lastgenre:
+  auto: false
+  count: 1
+  source: album
+library: /home/sea/Music/library.db
+lyrics:
+  auto: true
+  sources:
+  - lrclib
+paths:
+  comp: Various Artists/$album%aunique{}/$track $title
+  default: $albumartist/$album%aunique{}/$track $title
+  singleton: $artist/$title
+plugins:
+- musicbrainz
+- fetchart
+- embedart
+- lyrics
+- replaygain
+- scrub
+- mbsync
+- ftintitle
+- fromfilename
+- lastgenre
+- duplicates
+- missing
+- badfiles
+- unimported
+- info
+- edit
+- smartplaylist
+replaygain:
+  auto: false
+  backend: ffmpeg
+  targetlevel: 89
+scrub:
+  auto: false
+

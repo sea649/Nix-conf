@@ -1,0 +1,35 @@
+  [mgr]
+  linemode = "size"
+  show_hidden = true
+  sort_by = "natural"
+  sort_dir_first = true
+  [preview]
+  max_height = 800
+  max_width = 1000
+  [plugin]
+  prepend_previewers = [
+  { url = "*.md", run = 'faster-piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
+  { url = "*.age", run = 'faster-piper -- cd ~/Nix-conf/secrets && agenix -d "$(realpath --relative-to=. -- "$1")" -i ~/.config/age/keys.txt 2>/dev/null' },
+  {mime = "application/java-archive", run  = "archive"},
+  ]
+  [[plugin.prepend_fetchers]]
+  url   = "*"
+  run   = "git"
+  group = "git"
+
+  [[plugin.prepend_fetchers]]
+  url   = "*/"
+  run   = "git"
+  group = "git"
+  [opener]
+  extract = [
+    { run = "ya pub extract --list %s", desc = "Extract here" },
+  ]
+  decrypt = [
+    { run = 'cd ~/Nix-conf/secrets && agenix -e "$(realpath --relative-to=. -- %s1)" -i ~/.config/age/keys.txt', desc = "use my root ssh key to decrypt a .age file", block = true },
+  ]
+  [open]
+  prepend_rules = [
+    { mime = "application/{zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", use = "extract" },
+    { url = "*.age", use = "decrypt" },
+  ]

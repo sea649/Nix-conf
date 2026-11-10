@@ -1,30 +1,45 @@
 { ... }: {
-  flake.nixosModules.greeter = { config, ... }: {
-    services.displayManager.noctalia-greeter = {
+  flake.nixosModules.greeter = { config, pkgs, ... }: let
+    tuigreet = pkgs.writeShellApplication {
+      name = "tuigreet-start";
+      runtimeInputs = [
+        pkgs.tuigreet
+        pkgs.systemd
+      ];
+      text = ''
+        exec tuigreet \
+          --config /etc/tuigreet/config.toml \
+          --time \
+          --time-format '%Y-%m-%d %H:%M' \
+          --greeting 'Welcome to Umbriel' \
+          --user ${config.dotfiles.username} \
+          --remember \
+          --remember-user-session \
+          --asterisks \
+          --battery \
+          --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions \
+          --xsessions ${config.services.displayManager.sessionData.desktops}/share/xsessions \
+          --theme 'border=magenta;text=white;time=magenta;container=black;title=cyan;greet=cyan;prompt=blue;input=white;action=blue;button=yellow'
+      '';
+    };
+  in {
+    services.greetd = {
       enable = true;
-      passwordlessSyncUsers = [config.dotfiles.username];
-
-      cursorTheme = {
-        package = config.dotfiles.cursor.package;
-        name = config.dotfiles.cursor.theme;
-      };
-
-      settings = {
-        session.default = "Umbriel";
-        user.default = config.dotfiles.username;
-
-        appearance = {
-          scheme = "Synced";
-          theme_mode = "dark";
-        };
-
-        keyboard.layout = config.dotfiles.keyboardLayout;
-        output.name = config.dotfiles.shellMonitor;
-        cursor.size = 24;
+      useTextGreeter = true;
+      settings.default_session = {
+        user = "greeter";
+        command = "${tuigreet}/bin/tuigreet-start";
       };
     };
 
-    # Unlock the login keyring at greeter login.
+    services.displayManager.defaultSession = "umbriel";
+
+    environment.etc."tuigreet/config.toml".text = ''
+      [[outputs]]
+      connector = "${config.dotfiles.shellMonitor}"
+      primary = true
+    '';
+
     security.pam.services.greetd.enableGnomeKeyring = true;
   };
 }

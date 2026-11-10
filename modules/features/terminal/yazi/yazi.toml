@@ -9,7 +9,7 @@
   [plugin]
   prepend_previewers = [
   { url = "*.md", run = 'faster-piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
-  { url = "*.age", run = 'faster-piper -- cd ~/Nix-conf/secrets && agenix -d "$(realpath --relative-to=. -- "$1")" -i ~/.config/age/keys.txt 2>/dev/null' },
+  { url = "*.age", run = 'faster-piper -- cd ~/Nix-conf/secrets && agenix -d "$(realpath --relative-to=. -- "$1")" -i ~/.config/age/keys.txt | bat -l toml 2>/dev/null' },
   {mime = "application/java-archive", run  = "archive"},
   ]
   [[plugin.prepend_fetchers]]

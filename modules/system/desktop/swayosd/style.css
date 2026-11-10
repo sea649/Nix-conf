@@ -1,0 +1,48 @@
+@import url("/etc/stylix/waybar.css");
+
+window#osd {
+    background: alpha(@base00, 0.85);
+    border: 1px solid alpha(@base02, 0.9);
+    border-radius: 0;
+    box-shadow: none;
+    font-family: "Maple Mono NF ExtraBold", sans-serif;
+    font-size: 13px;
+}
+
+window#osd #container {
+    margin: 10px 14px;
+}
+
+window#osd image,
+window#osd label {
+    color: @base05;
+}
+
+window#osd progressbar,
+window#osd segmentedprogress {
+    min-height: 6px;
+    border-radius: 0;
+    border: none;
+    background: alpha(@base02, 0.6);
+}
+
+window#osd trough,
+window#osd segment {
+    min-height: 6px;
+    border-radius: 0;
+    border: none;
+    background: alpha(@base02, 0.8);
+}
+
+window#osd progress,
+window#osd segment.active {
+    min-height: 6px;
+    border-radius: 0;
+    border: none;
+    background: @base0E;
+}
+
+window#osd image:disabled,
+window#osd progressbar:disabled {
+    opacity: 0.5;
+}

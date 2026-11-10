@@ -21,12 +21,13 @@ order = [ "default", "bar_leftside", "bar_top" ]
     start = [ "clock", "taskbar", "spacer_2", "media", "cat_5" ]
 
     [bar.bar_top]
-    background_opacity = 0.99999997764825821
+    background_opacity = 0.0
+    capsule = true
     capsule_radius = 0
-    center = [ "workspaces", "bar_3", "taskbar" ]
+    center = [ "clock" ]
     concave_edge_corners = false
-    enabled = true
-    end = [ "group:g7", "clock" ]
+    enabled = false
+    end = [ "group:g7", "workspaces" ]
     margin_ends = 0
     position = "top"
     radius = 0
@@ -41,7 +42,7 @@ order = [ "default", "bar_leftside", "bar_top" ]
         enabled = true
         fill = "surface_container"
         id = "g1"
-        members = [ "wallpaper", "notes_3", "todo_6", "privacy", "bar_2", "bar_4", "tray" ]
+        members = [ "privacy", "tray" ]
         opacity = 1.0
         padding = 6.0
 
@@ -53,7 +54,7 @@ order = [ "default", "bar_leftside", "bar_top" ]
         fill = "surface_container"
         id = "g5"
         members = [ "media", "cat_3" ]
-        opacity = 0.0
+        opacity = 1.0
         padding = 6.0
         radius = 0.0
 
@@ -65,7 +66,7 @@ order = [ "default", "bar_leftside", "bar_top" ]
         fill = "surface_container"
         id = "g7"
         members = [ "cat_4", "cpu", "ram", "temp" ]
-        opacity = 0.0
+        opacity = 1.0
         padding = 6.0
         radius = 0.0
 
@@ -261,6 +262,7 @@ auto_locate = true
 allow_empty_password = false
 blur_intensity = 0.24999999441206455
 blurred_desktop = true
+enabled = false
 tint_intensity = 0.0
 wallpaper = ""
 
@@ -775,11 +777,13 @@ enabled = true
 [notification]
 background_opacity = 0.4999999888241291
 colorize_icons = false
+enable_daemon = false
 layer = "overlay"
 monitors = [ "DP-1" ]
 
 [osd]
 background_opacity = 0.4999999888241291
+enabled = false
 orientation = "horizontal"
 
 [plugin_settings."alexander/game-launcher"]
@@ -798,14 +802,14 @@ panel_position = "center"
 show_update_available_notification = false
 system_stats_check_interval = 100
 update_check_interval = 60
-update_command = "nix flake update --flake ~/Nix-conf/nixos"
+update_command = "nix flake update --flake ~/dotfiles/nixos"
 
 [plugin_settings."dotnetrob/cat"]
 panel_placement = "floating"
 
 [plugin_settings."dunarand/bookmarks"]
 bk_sort_by = "usage_count"
-data_path = "/home/sea/Nix-conf/assets/noctalia/data.json"
+data_path = "/home/sea/dotfiles/assets/noctalia/data.json"
 panel_layer = "overlay"
 panel_placement = "floating"
 
@@ -830,7 +834,7 @@ hardware_decode = true
 mute = true
 picker_placement = "floating"
 picker_position = "top_left"
-video_directory = "/home/sea/Nix-conf/wallpaper"
+video_directory = "/home/sea/dotfiles/wallpaper"
 
 [plugin_settings."noctalia/notes"]
 notes_dir = "/home/sea/Notes"
@@ -853,17 +857,7 @@ panel_placement = "floating"
 panel_position = "top_left"
 
 [plugins]
-enabled = [
-    "sea/tips",
-    "sea/vars-editor",
-    "nightwatch75/todo",
-    "noctalia/bongocat",
-    "dotnetrob/cat",
-    "noctalia/notes",
-    "noctalia/translator",
-    "ashur-d/wallpaper-widget",
-    "noctalia/wallpaper_depth"
-]
+enabled = [ "sea/tips", "sea/vars-editor", "noctalia/bongocat" ]
 
     [[plugins.source]]
     kind = "git"
@@ -887,7 +881,7 @@ enabled = [
 
 [shell]
 app_icon_color = "primary"
-avatar_path = "/home/sea/Nix-conf/assets/noctalia/avatar/avatar.png"
+avatar_path = "/home/sea/dotfiles/assets/noctalia/avatar/avatar.png"
 clipboard_confirm_clear_history = false
 corner_radius_scale = 0.0
 font_family = "Maple Mono NF ExtraBold"
@@ -988,14 +982,14 @@ wallpaper_scheme = "m3-fruit-salad"
     enable_community_templates = false
 
         [theme.templates.user.spicetify-noctalia]
-        input_path = "~/Nix-conf/noctalia/templates/spicetify-noctalia.ini"
+        input_path = "~/dotfiles/noctalia/templates/spicetify-noctalia.ini"
         output_path = "$XDG_CONFIG_HOME/spicetify/Themes/Noctalia/color.ini"
         post_hook = "spicetify -q apply --no-restart"
 
 [wallpaper]
-directory = "/home/sea/Nix-conf/assets/wallpaper"
-directory_dark = "/home/sea/Nix-conf/assets/wallpaper"
-directory_light = "/home/sea/Nix-conf/assets/wallpaper"
+directory = "/home/sea/dotfiles/assets/wallpaper"
+directory_dark = "/home/sea/dotfiles/assets/wallpaper"
+directory_light = "/home/sea/dotfiles/assets/wallpaper"
 enabled = false
 transition_on_startup = true
 
@@ -1003,35 +997,35 @@ transition_on_startup = true
     enabled = false
 
     [wallpaper.default]
-    path = "/home/sea/Nix-conf/assets/wallpaper/wallhaven-x6x3gz_1920x1200.png"
+    path = "/home/sea/dotfiles/assets/wallpaper/wallhaven-x6x3gz_1920x1200.png"
 
     [wallpaper.last]
-    path = "/home/sea/Nix-conf/assets/wallpaper/wallhaven-x6x3gz_1920x1200.png"
+    path = "/home/sea/dotfiles/assets/wallpaper/wallhaven-x6x3gz_1920x1200.png"
 
     [wallpaper.monitors.DP-1]
-    path = "/home/sea/Nix-conf/assets/wallpaper/wallhaven-x6x3gz_1920x1200.png"
+    path = "/home/sea/dotfiles/assets/wallpaper/wallhaven-x6x3gz_1920x1200.png"
 
     [wallpaper.monitors.WL-1]
-    path = "/home/sea/Nix-conf/wallpaper/wallhaven-e7kpl8_1920x1200.png"
+    path = "/home/sea/dotfiles/wallpaper/wallhaven-e7kpl8_1920x1200.png"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/sea/Nix-conf/wallpaper/wallhaven-gw2e9e_1920x1200.png"
+    path = "/home/sea/dotfiles/wallpaper/wallhaven-gw2e9e_1920x1200.png"
 
     [[wallpaper.favorite]]
     palette_source = "wallpaper"
-    path = "/home/sea/Nix-conf/assets/wallpaper/wallhaven-ducks-flowers.png"
+    path = "/home/sea/dotfiles/assets/wallpaper/wallhaven-ducks-flowers.png"
     theme_mode = "dark"
     wallpaper_scheme = "m3-content"
 
     [[wallpaper.favorite]]
     builtin_palette = "Catppuccin"
     palette_source = "builtin"
-    path = "/home/sea/Nix-conf/assets/wallpaper/wallhaven-x6x3gz_1920x1200.png"
+    path = "/home/sea/dotfiles/assets/wallpaper/wallhaven-x6x3gz_1920x1200.png"
     theme_mode = "dark"
 
     [[wallpaper.favorite]]
     palette_source = "wallpaper"
-    path = "/home/sea/Nix-conf/assets/wallpaper/wallhaven-z8p9rj_1920x1200.png"
+    path = "/home/sea/dotfiles/assets/wallpaper/wallhaven-z8p9rj_1920x1200.png"
     theme_mode = "dark"
     wallpaper_scheme = "m3-content"
 
@@ -1105,10 +1099,12 @@ type = "dotnetrob/cat:cat"
 [widget.cat_3]
 audio_spectrum = true
 color = "secondary"
+enabled = false
 tappy_mode = true
 type = "noctalia/bongocat:cat"
 
 [widget.cat_4]
+enabled = false
 type = "dotnetrob/cat:cat"
 
 [widget.cat_5]
@@ -1228,6 +1224,7 @@ visualization = "gauge"
 [widget.taskbar]
 capsule = false
 colorize_icons = false
+enabled = false
 group_by_workspace = true
 group_single_icon_per_app = true
 hide_empty_workspaces = false
@@ -1237,6 +1234,7 @@ workspace_label_placement = "inside"
 
 [widget.temp]
 color = "on_surface"
+enabled = false
 label_show_units = false
 
 [widget.theme_mode]
@@ -1300,6 +1298,7 @@ color = "primary"
 type = "noctalia/wallhaven:wallhaven"
 
 [widget.wallpaper]
+enabled = false
 icon_color = "on_surface"
 
     [widget.wallpaper.actions]
@@ -1316,10 +1315,11 @@ capsule = true
 capsule_opacity = 1.0
 capsule_padding = 16
 capsule_radius = 0
+change_color_on_hover = false
 colorize_icons = false
-enabled = false
-hide_when_empty = false
+enabled = true
+hide_when_empty = true
 label_source = "id"
 labels_only_when_occupied = true
-show_labels = false
-style = "regular"
+show_labels = true
+style = "minimal"

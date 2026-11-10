@@ -17,6 +17,7 @@
       ncl = "nh clean all";
       cat = "bat";
       v = "nvim";
+      ni = "cd ~/Nix-conf/";
     };
 
     env = {
@@ -51,11 +52,6 @@
         and git checkout (string trim "$branch")
       end
 
-    function noctalia-update
-      set host (cat /proc/sys/kernel/hostname)
-        noctalia config export merged > "$HOME/Nix-conf/modules/hosts/$host/noctalia.toml"
-      and noctalia config validate
-    end
     function y
       set tmp (mktemp -t "yazi-cwd.XXXXXX")
       command yazi $argv --cwd-file="$tmp"

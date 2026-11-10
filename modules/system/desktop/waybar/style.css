@@ -1,0 +1,105 @@
+@import url("/etc/stylix/waybar.css");
+
+* {
+    font-family: "Maple Mono NF ExtraBold", "Noto Color Emoji", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    color: @base05;
+}
+
+window#waybar.hidden { opacity: 0.2; }
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#power-profiles-daemon,
+#tray,
+#privacy,
+#workspaces,
+#mpris {
+    background-color: alpha(@base01, 0.75);
+    color: @base05;
+    padding: 0 9px;
+    margin: 4px 2px;
+    border-radius: 0px;
+}
+
+#pulseaudio { padding-right: 15px; }
+#power-profiles-daemon { padding-right: 16px; }
+#cpu { padding-right: 14px; }
+#memory { padding-right: 14px; }
+#workspaces {
+    padding: 0 4px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    margin: 0 1px;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: @base05;
+}
+
+#workspaces button:hover {
+    background: alpha(@base02, 0.85);
+    color: @base0D;
+}
+
+#workspaces button.active {
+    background: alpha(@base02, 0.85);
+    color: @base0E;
+}
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#network:hover,
+#pulseaudio:hover,
+#power-profiles-daemon:hover,
+#tray:hover,
+#privacy:hover {
+    background-color: alpha(@base02, 0.85);
+}
+
+#tray { padding: 0 8px; }
+#tray > .passive { -gtk-icon-effect: dim; }
+#tray > .needs-attention { -gtk-icon-effect: highlight; }
+
+#battery.charging, #battery.plugged { color: @base0B; }
+#battery.warning:not(.charging) { color: @base0A; }
+#battery.critical:not(.charging) {
+    background-color: alpha(@base08, 0.85);
+    color: @base00;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+@keyframes blink {
+    to { background-color: alpha(@base0A, 0.85); color: @base00; }
+}
+
+#network.disconnected { color: @base08; }
+#network.linked { color: @base0A; }
+#pulseaudio.muted { color: @base08; }
+#pulseaudio.bluetooth { color: @base0C; }
+
+#power-profiles-daemon.performance { color: @base08; }
+#power-profiles-daemon.balanced { color: @base0D; }
+#power-profiles-daemon.power-saver { color: @base0B; }
+
+#privacy { padding: 0 6px; }
+#privacy-item { padding: 0 3px; color: @base09; }

@@ -10,7 +10,6 @@
       locale = "en_GB.UTF-8";
       keyboardLayout = "gb";
       consoleKeyMap = "uk";
-      shell = "noctalia";
       shellMonitor = "eDP-1";
       wallpaper = "wallhaven-je8p85_1920x1200.png";
       kernel = "zen";
@@ -22,7 +21,6 @@
         size = 24;
         };
       umbrielConfig = ./umbriel.conf;
-      noctaliaConfig = ./noctalia.toml;
     };
   };
 }

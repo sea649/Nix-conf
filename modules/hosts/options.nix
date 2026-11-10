@@ -7,7 +7,6 @@
         "zen"
         "jovian"
       ];
-      shells = [ "noctalia" ];
       browser = [
         "helium"
         "librewolf"
@@ -91,11 +90,11 @@
           description = "Host-specific Umbriel TOML config;";
           default = null;
         };
-        noctaliaConfig = lib.mkOption {
-          type = lib.types.nullOr lib.types.path;
-          description = "Host-specific Noctalia TOML config;";
-          default = null;
-        };
+        # noctaliaConfig = lib.mkOption {
+        #   type = lib.types.nullOr lib.types.path;
+        #   description = "Host-specific Noctalia TOML config;";
+        #   default = null;
+        # };
         timezone = lib.mkOption {
           type = lib.types.str;
           description = "IANA time zone, e.g. \"Europe/London\".";
@@ -115,11 +114,6 @@
           type = lib.types.str;
           description = "Console keymap for loadkeys. XKB names differ, e.g. gb -> uk.";
           default = "uk";
-        };
-        shell = lib.mkOption {
-          type = lib.types.enum shells;
-          description = "Desktop shell.";
-          default = "noctalia";
         };
         shellMonitor = lib.mkOption {
           type = lib.types.str;

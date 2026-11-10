@@ -8,7 +8,7 @@ exec_cmd = "sh -c" # your chosen shell, eg. "zsh -c" for zsh
 vi_mode = true # true for vi keybinds, false emacs keybinds
 cheatsheet_entry = "?" # the key to show configured modules
 cheatsheet_viewer = "less -R; clear" # command to show cheatsheet; through piping stdout
-external_editor = "vi" # ctrl+x ctrl+e (or v in vi normal mode)
+external_editor = "nvim" # ctrl+x ctrl+e (or v in vi normal mode)
 
 
 [interface]
@@ -72,6 +72,7 @@ cmd = """
 umbriel msg window-set-primary-extent 0.365;
 umbriel msg window-set-secondary-extent 0.600;
 umbriel msg window-center;
+fsel --refresh-cache >/dev/null 2>&1;
 fsel -d
 """
 
@@ -104,6 +105,11 @@ umbriel msg window-set-secondary-extent 0.600;
 umbriel msg window-center;
 nmtui
 """
+[[modules]]
+description = "set power profile"
+prefix = "pp"
+cmd = "powerprofilesctl set {}"
+with_argument = true
 
 [[modules]]
 description = "Notes"
@@ -124,7 +130,8 @@ umbriel msg window-set-primary-extent 0.365;
 umbriel msg window-set-secondary-extent 0.600;
 umbriel msg window-center;
 umbriel msg window-toggle-pinned;
-nh os switch
+nh os switch 2>&1 | tee /tmp/nh-switch.log;
+notify-send "nixos-rebuild" "$(tail -n 6 /tmp/nh-switch.log | sed -E 's/\x1b\\[[0-9;]*m//g; s/^> //')"
 """
 
 [[modules]]
@@ -136,7 +143,8 @@ umbriel msg window-set-primary-extent 0.365;
 umbriel msg window-set-secondary-extent 0.600;
 umbriel msg window-center;
 umbriel msg window-toggle-pinned;
-nh clean all
+nh clean all 2>&1 | tee /tmp/nix-gc.log;
+notify-send "nix gc" "$(tail -n 3 /tmp/nix-gc.log | sed -E 's/\x1b\\[[0-9;]*m//g; s/^> //')"
 """
 
 
@@ -148,7 +156,8 @@ umbriel msg window-set-primary-extent 0.365;
 umbriel msg window-set-secondary-extent 0.600;
 umbriel msg window-center;
 umbriel msg window-toggle-pinned;
-nix flake update --flake ~/Nix-conf; and nh os switch
+nix flake update --flake ~/Nix-conf; and nh os switch 2>&1 | tee /tmp/flake-update.log;
+notify-send "flake-update" "$(tail -n 3 /tmp/flake-update.log | sed -E 's/\x1b\\[[0-9;]*m//g; s/^> //')"
 """
 
 [[modules]]
@@ -162,11 +171,66 @@ cliphist list | fsel --dmenu --delimiter $'\t' --with-nth 2 | cliphist decode | 
 """
 
 [[modules]]
+description = "notification history"
+prefix = "nh"
+cmd = """
+umbriel msg window-set-primary-extent 0.365;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+makoctl history -j | jq -r '.[] | [
+  ((.summary // "(no summary)") | gsub("[\t\r\n]"; " ")),
+  ("app: " + (.app_name // "unknown")
+   + " · urgency: " + (.urgency // "normal")
+   + " · " + ((.body // "(no body)") | gsub("\t"; "    ") | gsub("\r"; "") | gsub("\n"; " ⏎ ")))
+] | @tsv' | fsel --dmenu --delimiter $'\t' --with-nth 1
+"""
+
+[[modules]]
+description = "toggle night light"
+prefix = "nl"
+cmd = "pkill -USR1 -x wlsunset"
+
+[[modules]]
 description = "clipboard history wipe"
 prefix = "chw"
 cmd = """
 cliphist wipe
 """
+
+[[modules]]
+description = "lock"
+prefix = "loc"
+cmd = "loginctl lock-session"
+
+[[modules]]
+description = "logout"
+prefix = "log"
+cmd = "loginctl terminate-user $USER"
+
+[[modules]]
+description = "suspend"
+prefix = "sus"
+cmd = "systemctl suspend"
+
+[[modules]]
+description = "reboot"
+prefix = "reb"
+cmd = "systemctl reboot"
+
+[[modules]]
+description = "shutdown"
+prefix = "shu"
+cmd = "systemctl poweroff"
+
+[[modules]]
+description = "hibernate"
+prefix = "hib"
+cmd = "systemctl hibernate"
+
+[[modules]]
+description = "suspend then hibernate"
+prefix = "sth"
+cmd = "systemctl suspend-then-hibernate"
 
 [[modules]]
 description = "run commands"

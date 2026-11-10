@@ -1,0 +1,136 @@
+{
+  "tray": {
+    "spacing": 10
+  },
+  "clock": {
+    // "timezone": "America/New_York",
+    "format": "{:%a, %d %h • %H•%M}",
+    "tooltip": false,
+    "format-alt": "{:%H•%M}"
+  },
+  "cpu": {
+    "format": "{usage}% ",
+    "tooltip": false,
+    "on-click": "umbriel msg scratchpad-toggle bottom"
+  },
+  "memory": {
+    "format": "{used} ",
+    "tooltip": false,
+    "on-click": "umbriel msg scratchpad-toggle bottom"
+  },
+  "battery": {
+    "interval": 60,
+    "format": "{capacity}% {icon}",
+    "format-icons": {
+      "default": [
+        "󰂎",
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ],
+      "charging": [
+        "󰢟",
+        "󰢜",
+        "󰂆",
+        "󰂇",
+        "󰂈",
+        "󰢝",
+        "󰂉",
+        "󰢞",
+        "󰂊",
+        "󰂋",
+        "󰂅"
+      ]
+    }
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+  "network": {
+    "interface": "wlo*",
+    "format": "󰤭",
+    "format-wifi": "{icon} {signalStrength}%",
+    "format-ethernet": "󰈀 {ifname}",
+    "tooltip-format": "{ifname} {frequency}GHz",
+    "format-linked": "{ifname} (No IP)",
+    "format-disconnected": "Disconnected ⚠",
+    "format-icons": [
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "on-click": "kitty --title=otter-launcher -e otter-launcher wi"
+  },
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "{volume}% {icon} {format_source}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": "󰅶 {icon} {format_source}",
+    "format-muted": "󰅶 {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "󰂑",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click": "kitty --title=otter-launcher -e otter-launcher bt"
+  },
+  "privacy": {
+    "icon-spacing": 4,
+    "icon-size": 18,
+    "transition-duration": 250,
+    "modules": [
+      {
+        "type": "audio-in",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      },
+      {
+        "type": "screenshare",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      }
+    ]
+  },
+  "ext/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5"
+    },
+    "sort-by-name": true
+  },
+  "mpris": {
+    "format": "{title}",
+    "tooltip": false
+  }
+}

@@ -62,7 +62,7 @@
     }
   },
   "network": {
-    "interface": "wlo*",
+    "interface": "wl*",
     "format": "󰤭",
     "format-wifi": "{icon} {signalStrength}%",
     "format-ethernet": "󰈀 {ifname}",

@@ -30,6 +30,7 @@
       # -- Utils --
       beets
       desktop-utils
+      fsel
       gtk
       stylix
       xkg

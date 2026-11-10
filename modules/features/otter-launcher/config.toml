@@ -47,7 +47,7 @@ separator_label = "  otter "
 
 [image]
 format = "kitty" # graphics protocols to use; options: kitty, sixel, iterm2, symbol
-path = "~/.config/otter-launcher/cat.png" # path to the image file
+path = "~/Nix-conf/modules/features/otter-launcher/cat.png" # path to the image file
 width = 12 # the size of image; count columns for horizontal layout, lines for vertical layout
 position = "left" # image placement; options: left, right, top, bottom
 padding = [0, 0, 0, 0] # [top, right, down, left]

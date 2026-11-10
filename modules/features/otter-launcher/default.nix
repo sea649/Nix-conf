@@ -39,7 +39,7 @@
             inherit pkgs;
             package = inputs'.otter-launcher.packages.default;
             runtimePkgs = with pkgs; [
-              fsel
+              self'.packages.fsel
               bluetui
               wiremix
               networkmanager

@@ -18,6 +18,7 @@
       cat = "bat";
       v = "nvim";
       ni = "cd ~/Nix-conf/";
+      niv = "cd ~/Nix-conf/; nvim";
     };
 
     env = {

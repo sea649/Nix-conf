@@ -242,6 +242,11 @@ with_argument = true
 unbind_proc = true
 
 [[modules]]
+description = "cheatsheet"
+prefix = "che"
+cmd = "umbriel msg cheatsheet-toggle"
+
+[[modules]]
 description = "search nixpkgs"
 prefix = "ns"
 cmd = "xdg-open https://mynixos.com/search?q={}"

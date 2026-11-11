@@ -4,8 +4,10 @@
       audio
       agenix
       bootloader
+      disko
       fonts
       hardware
+      impermanence
       networking
       nix
       options

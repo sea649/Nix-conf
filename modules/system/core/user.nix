@@ -1,8 +1,8 @@
 { ... }: {
-  flake.nixosModules.user = { config, pkgs, ... }: {
+  flake.nixosModules.user = { config, lib, pkgs, ... }: {
     users.users.${config.dotfiles.username} = {
       isNormalUser = true;
-      initialPassword = "password";
+      initialPassword = lib.mkIf (!config.dotfiles.impermanence.enable) "password";
       extraGroups = [
         "networkmanager"
           "wheel"

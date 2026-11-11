@@ -85,6 +85,35 @@
           description = "Absolute path to this dotfiles checkout on the host.";
           default = "/home/sea/Nix-conf";
         };
+        disk = {
+          device = lib.mkOption {
+            type = lib.types.str;
+            description = "Disko target disk. Prefer /dev/disk/by-id/...";
+            default = "/dev/nvme0n1";
+          };
+          encrypt = lib.mkOption {
+            type = lib.types.bool;
+            description = "Wrap the btrfs partition in LUKS (install-time only).";
+            default = false;
+          };
+          tmpfsSize = lib.mkOption {
+            type = lib.types.str;
+            description = "Maximum size of the RAM-backed root filesystem.";
+            default = "4G";
+          };
+        };
+        impermanence = {
+          enable = lib.mkOption {
+            type = lib.types.bool;
+            description = "Enable disko + tmpfs root + persistence for this host.";
+            default = false;
+          };
+          persistPath = lib.mkOption {
+            type = lib.types.str;
+            description = "Mount point of the persistent btrfs subvolume.";
+            default = "/persist";
+          };
+        };
         umbrielConfig = lib.mkOption {
           type = lib.types.nullOr lib.types.path;
           description = "Host-specific Umbriel TOML config;";

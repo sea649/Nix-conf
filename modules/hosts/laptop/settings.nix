@@ -16,6 +16,11 @@
       browser = "helium";
       gtkTheme = "Adwaita-dark";
       iconTheme = "breeze-dark";
+      disk = {
+        device = "/dev/disk/by-id/nvme-PSELN128GA17SC0_0525186035859";
+        tmpfsSize = "2G";
+      };
+      impermanence.enable = true;
       cursor = {
         theme = "Bibata-Modern-Ice";
         size = 24;

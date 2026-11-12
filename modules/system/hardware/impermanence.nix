@@ -40,12 +40,6 @@
             "/var/lib/bluetooth"
             "/var/lib/fwupd"
             "/var/lib/AccountsService"
-            {
-              directory = "/var/lib/colord";
-              user = "colord";
-              group = "colord";
-              mode = "u=rwx,g=rx,o=";
-            }
             "/var/lib/upower"
             "/var/lib/alsa"
             "/var/lib/cups"
@@ -64,20 +58,105 @@
             # "pictures" is the lowercase wallpaper dir on the laptop;
             # on the Deck it is just an empty directory.
 
+            # Whitelist only what is actually used. Everything not listed here
+            # lives on the tmpfs root and is discarded on reboot, so stale app
+            # data / caches cannot accumulate on /persist.
+
             # secrets / identity
             { directory = ".ssh"; mode = "0700"; }
             { directory = ".gnupg"; mode = "0700"; }
             { directory = ".local/share/keyrings"; mode = "0700"; }
-            ".pki" ".keys" ".opencode"
+            ".pki" ".keys" ".opencode" ".config/age"
 
-            # application state
-            ".config"
-            ".local/share"
-            ".local/state"
-            ".librewolf" ".mozilla" ".steam"
+            # browsers / profiles
+            ".librewolf"
+            ".config/librewolf"
+            ".config/net.imput.helium"
 
-            # caches stay on disk, not RAM
-            ".cache"
+            # installed app config
+            ".config/obsidian"
+            ".config/Blockbench"
+            ".config/thunderbird"
+            ".config/tutanota-desktop"
+            ".config/Proton Pass"
+            ".config/Proton"
+            ".config/FreeTube"
+            ".config/heroic"
+            ".config/keepassxc"
+            ".config/obs-studio"
+            ".config/vesktop"
+            ".config/concord"
+            ".config/news-flash"
+            ".config/sonora"
+            ".config/syncthing"
+            ".config/opencode"
+            ".config/umbriel"
+
+            # editor / terminal / shell config
+            ".config/nvim"
+            ".config/nvf"
+            ".config/lazyvim"
+            ".config/nvim-personal"
+            ".config/SEA-neovim-config"
+            ".config/yazi"
+            ".config/zellij"
+            ".config/kitty"
+            ".config/fish"
+            ".config/tmux"
+            ".config/btop"
+            ".config/bottom"
+            ".config/lazygit"
+            ".config/gh"
+            ".config/jj"
+            ".config/mpv"
+            ".config/Thunar"
+            ".config/fsel"
+            ".config/fuzzel"
+            ".config/hypr"
+            ".config/dconf"
+            ".config/systemd"
+            ".config/environment.d"
+            ".config/xdg-desktop-portal-wlr"
+            ".config/xsettingsd"
+            ".config/qt5ct"
+            ".config/qt6ct"
+            ".config/qtengine"
+            ".config/stylix"
+            ".config/gtk-3.0"
+            ".config/gtk-4.0"
+
+            # application data
+            ".local/share/Steam"
+            ".steam"
+            ".local/share/applications"
+            ".local/share/opencode"
+            ".local/share/nvim"
+            ".local/share/nvf"
+            ".local/share/lazyvim"
+            ".local/share/nvim-personal"
+            ".local/share/SEA-neovim-config"
+            ".local/share/news-flash"
+            ".local/share/sonora"
+            ".local/share/stremio"
+            ".local/share/zathura"
+            ".local/share/com.github.johnfactotum.Foliate"
+            ".local/share/fish"
+            ".local/share/PrismLauncher"
+            ".local/share/nix"
+            ".local/share/icons"
+
+            # runtime state worth keeping
+            ".local/state/SEA-neovim-config/undo"
+            ".local/state/SEA-neovim-config/shada"
+            ".local/state/syncthing"
+            ".local/state/syncthing-versions"
+            ".local/state/opencode"
+            ".local/state/Heroic"
+            ".local/state/keepassxc"
+            ".local/state/nix"
+            ".local/state/home-manager"
+
+            # NOTE: .cache is deliberately NOT persisted and dies on reboot.
           ];
         };
 

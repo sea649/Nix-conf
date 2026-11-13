@@ -20,12 +20,13 @@
       foliate
       keepassxc
       kitty
+      mullvad
       obs
       obsidian
       opencode
-      proton
       sonora
       thunar
+      tuta
 
       # -- Utils --
       beets

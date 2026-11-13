@@ -1,181 +1,203 @@
-{ inputs, ... }: {
-  flake.nixosModules.impermanence =
-    { config, lib, ... }:
-    let
-      inherit (lib) mkIf;
-      cfg = config.dotfiles;
-      persist = cfg.impermanence.persistPath;
-    in {
-      imports = [ inputs.impermanence.nixosModules.impermanence ];
+{inputs, ...}: {
+  flake.nixosModules.impermanence = {
+    config,
+    lib,
+    ...
+  }: let
+    inherit (lib) mkIf;
+    cfg = config.dotfiles;
+    persist = cfg.impermanence.persistPath;
+  in {
+    imports = [inputs.impermanence.nixosModules.impermanence];
 
-      config = mkIf cfg.impermanence.enable {
-        # /etc/shadow is on tmpfs, so runtime `passwd` changes would be lost.
-        # Use a hash file on the persistent volume instead.
-        users.mutableUsers = false;
-        users.users.${cfg.username}.hashedPasswordFile =
-          "${persist}/passwords/${cfg.username}";
+    config = mkIf cfg.impermanence.enable {
+      # /etc/shadow is on tmpfs, so runtime `passwd` changes would be lost.
+      # Use a hash file on the persistent volume instead.
+      users.mutableUsers = false;
+      users.users.${cfg.username}.hashedPasswordFile = "${persist}/passwords/${cfg.username}";
 
-        # Keep host keys on /persist and point sshd at them directly, so
-        # agenix does not depend on a stage-2 /etc/ssh bind mount.
-        services.openssh.hostKeys = lib.mkForce [
-          {
-            type = "ed25519";
-            path = "${persist}/etc/ssh/ssh_host_ed25519_key";
-          }
-          {
-            type = "rsa";
-            bits = 4096;
-            path = "${persist}/etc/ssh/ssh_host_rsa_key";
-          }
+      # Keep host keys on /persist and point sshd at them directly, so
+      # agenix does not depend on a stage-2 /etc/ssh bind mount.
+      services.openssh.hostKeys = lib.mkForce [
+        {
+          type = "ed25519";
+          path = "${persist}/etc/ssh/ssh_host_ed25519_key";
+        }
+        {
+          type = "rsa";
+          bits = 4096;
+          path = "${persist}/etc/ssh/ssh_host_rsa_key";
+        }
+      ];
+
+      environment.persistence.${persist} = {
+        hideMounts = true;
+
+        directories = [
+          "/etc/NetworkManager/system-connections"
+          "/etc/mullvad-vpn"
+          "/var/lib/nixos"
+          "/var/lib/systemd"
+          "/var/lib/NetworkManager"
+          "/var/lib/bluetooth"
+          "/var/lib/fwupd"
+          "/var/lib/AccountsService"
+          "/var/lib/upower"
+          "/var/lib/alsa"
+          "/var/lib/cups"
+          "/var/lib/hjem"
+          "/var/lib/power-profiles-daemon"
+          # "/var/lib/fprint"
+          "/var/log"
         ];
 
-        environment.persistence.${persist} = {
-          hideMounts = true;
+        files = ["/etc/machine-id"];
 
-          directories = [
-            "/etc/NetworkManager/system-connections"
-            "/var/lib/nixos"
-            "/var/lib/systemd"
-            "/var/lib/NetworkManager"
-            "/var/lib/bluetooth"
-            "/var/lib/fwupd"
-            "/var/lib/AccountsService"
-            "/var/lib/upower"
-            "/var/lib/alsa"
-            "/var/lib/cups"
-            "/var/lib/hjem"
-            "/var/lib/power-profiles-daemon"
-            # "/var/lib/fprint"
-            "/var/log"
-          ];
+        users.${cfg.username}.directories = [
+          # user data
+          "Nix-conf"
+          "Sync"
+          "Notes"
+          "Documents"
+          "Pictures"
+          "Music"
+          "Projects"
+          "wallpaper"
+          "neovim"
+          "org"
+          "pictures"
+          # "pictures" is the lowercase wallpaper dir on the laptop;
+          # on the Deck it is just an empty directory.
 
-          files = [ "/etc/machine-id" ];
+          # Whitelist only what is actually used. Everything not listed here
+          # lives on the tmpfs root and is discarded on reboot, so stale app
+          # data / caches cannot accumulate on /persist.
 
-          users.${cfg.username}.directories = [
-            # user data
-            "Nix-conf" "Sync" "Notes" "Documents" "Pictures" "Music"
-            "Projects" "wallpaper" "neovim" "org" "pictures"
-            # "pictures" is the lowercase wallpaper dir on the laptop;
-            # on the Deck it is just an empty directory.
+          # secrets / identity
+          {
+            directory = ".ssh";
+            mode = "0700";
+          }
+          {
+            directory = ".gnupg";
+            mode = "0700";
+          }
+          {
+            directory = ".local/share/keyrings";
+            mode = "0700";
+          }
+          ".pki"
+          ".keys"
+          ".opencode"
+          ".config/age"
 
-            # Whitelist only what is actually used. Everything not listed here
-            # lives on the tmpfs root and is discarded on reboot, so stale app
-            # data / caches cannot accumulate on /persist.
+          # browsers / profiles
+          ".librewolf"
+          ".config/librewolf"
+          ".config/net.imput.helium"
 
-            # secrets / identity
-            { directory = ".ssh"; mode = "0700"; }
-            { directory = ".gnupg"; mode = "0700"; }
-            { directory = ".local/share/keyrings"; mode = "0700"; }
-            ".pki" ".keys" ".opencode" ".config/age"
+          # installed app config
+          ".config/obsidian"
+          ".config/Blockbench"
+          ".config/thunderbird"
+          ".config/tutanota-desktop"
+          ".config/Mullvad VPN"
+          ".config/FreeTube"
+          ".config/heroic"
+          ".config/keepassxc"
+          ".config/obs-studio"
+          ".config/vesktop"
+          ".config/concord"
+          ".config/news-flash"
+          ".config/sonora"
+          ".config/syncthing"
+          ".config/opencode"
+          ".config/umbriel"
 
-            # browsers / profiles
-            ".librewolf"
-            ".config/librewolf"
-            ".config/net.imput.helium"
+          # editor / terminal / shell config
+          ".config/nvim"
+          ".config/nvf"
+          ".config/lazyvim"
+          ".config/nvim-personal"
+          ".config/SEA-neovim-config"
+          ".config/yazi"
+          ".config/zellij"
+          ".config/kitty"
+          ".config/fish"
+          ".config/tmux"
+          ".config/btop"
+          ".config/bottom"
+          ".config/lazygit"
+          ".config/gh"
+          ".config/jj"
+          ".config/mpv"
+          ".config/Thunar"
+          ".config/fsel"
+          ".config/fuzzel"
+          ".config/hypr"
+          ".config/dconf"
+          ".config/systemd"
+          ".config/environment.d"
+          ".config/xdg-desktop-portal-wlr"
+          ".config/xsettingsd"
+          ".config/qt5ct"
+          ".config/qt6ct"
+          ".config/qtengine"
+          ".config/stylix"
+          ".config/gtk-3.0"
+          ".config/gtk-4.0"
 
-            # installed app config
-            ".config/obsidian"
-            ".config/Blockbench"
-            ".config/thunderbird"
-            ".config/tutanota-desktop"
-            ".config/Proton Pass"
-            ".config/Proton"
-            ".config/FreeTube"
-            ".config/heroic"
-            ".config/keepassxc"
-            ".config/obs-studio"
-            ".config/vesktop"
-            ".config/concord"
-            ".config/news-flash"
-            ".config/sonora"
-            ".config/syncthing"
-            ".config/opencode"
-            ".config/umbriel"
+          # application data
+          ".local/share/Steam"
+          ".steam"
+          ".local/share/applications"
+          ".local/share/opencode"
+          ".local/share/nvim"
+          ".local/share/nvf"
+          ".local/share/lazyvim"
+          ".local/share/nvim-personal"
+          ".local/share/SEA-neovim-config"
+          ".local/share/news-flash"
+          ".local/share/sonora"
+          ".local/share/stremio"
+          ".local/share/zathura"
+          ".local/share/com.github.johnfactotum.Foliate"
+          ".local/share/fish"
+          ".local/share/PrismLauncher"
+          ".local/share/nix"
+          ".local/share/icons"
 
-            # editor / terminal / shell config
-            ".config/nvim"
-            ".config/nvf"
-            ".config/lazyvim"
-            ".config/nvim-personal"
-            ".config/SEA-neovim-config"
-            ".config/yazi"
-            ".config/zellij"
-            ".config/kitty"
-            ".config/fish"
-            ".config/tmux"
-            ".config/btop"
-            ".config/bottom"
-            ".config/lazygit"
-            ".config/gh"
-            ".config/jj"
-            ".config/mpv"
-            ".config/Thunar"
-            ".config/fsel"
-            ".config/fuzzel"
-            ".config/hypr"
-            ".config/dconf"
-            ".config/systemd"
-            ".config/environment.d"
-            ".config/xdg-desktop-portal-wlr"
-            ".config/xsettingsd"
-            ".config/qt5ct"
-            ".config/qt6ct"
-            ".config/qtengine"
-            ".config/stylix"
-            ".config/gtk-3.0"
-            ".config/gtk-4.0"
+          # runtime state worth keeping
+          ".local/state/SEA-neovim-config/undo"
+          ".local/state/SEA-neovim-config/shada"
+          ".local/state/syncthing"
+          ".local/state/syncthing-versions"
+          ".local/state/opencode"
+          ".local/state/Heroic"
+          ".local/state/keepassxc"
+          ".local/state/nix"
+          ".local/state/home-manager"
 
-            # application data
-            ".local/share/Steam"
-            ".steam"
-            ".local/share/applications"
-            ".local/share/opencode"
-            ".local/share/nvim"
-            ".local/share/nvf"
-            ".local/share/lazyvim"
-            ".local/share/nvim-personal"
-            ".local/share/SEA-neovim-config"
-            ".local/share/news-flash"
-            ".local/share/sonora"
-            ".local/share/stremio"
-            ".local/share/zathura"
-            ".local/share/com.github.johnfactotum.Foliate"
-            ".local/share/fish"
-            ".local/share/PrismLauncher"
-            ".local/share/nix"
-            ".local/share/icons"
-
-            # runtime state worth keeping
-            ".local/state/SEA-neovim-config/undo"
-            ".local/state/SEA-neovim-config/shada"
-            ".local/state/syncthing"
-            ".local/state/syncthing-versions"
-            ".local/state/opencode"
-            ".local/state/Heroic"
-            ".local/state/keepassxc"
-            ".local/state/nix"
-            ".local/state/home-manager"
-
-            # NOTE: .cache is deliberately NOT persisted and dies on reboot.
-          ];
-        };
-
-        # Directories that must exist before sshd/agenix/users run.
-        # impermanence #254: DynamicUser services expect /var/lib/private 0700.
-        systemd.tmpfiles.rules = [
-          "d ${persist}/etc/ssh 0755 root root -"
-          "d ${persist}/passwords 0700 root root -"
-          "d ${persist}/var/lib/private 0700 root root -"
-          "d /var/lib/private 0700 root root -"
+          # NOTE: .cache is deliberately NOT persisted and dies on reboot.
         ];
-        systemd.services."systemd-tmpfiles-resetup".serviceConfig.RemainAfterExit =
-          lib.mkForce false;
+      };
 
-        services.journald.settings.Journal.Storage = "persistent";
-        services.btrfs.autoScrub = {
-          enable = true;
-          fileSystems = [ "/nix" ];
-        };
+      # Directories that must exist before sshd/agenix/users run.
+      # impermanence #254: DynamicUser services expect /var/lib/private 0700.
+      systemd.tmpfiles.rules = [
+        "d ${persist}/etc/ssh 0755 root root -"
+        "d ${persist}/passwords 0700 root root -"
+        "d ${persist}/var/lib/private 0700 root root -"
+        "d /var/lib/private 0700 root root -"
+      ];
+      systemd.services."systemd-tmpfiles-resetup".serviceConfig.RemainAfterExit =
+        lib.mkForce false;
+
+      services.journald.settings.Journal.Storage = "persistent";
+      services.btrfs.autoScrub = {
+        enable = true;
+        fileSystems = ["/nix"];
       };
     };
+  };
 }

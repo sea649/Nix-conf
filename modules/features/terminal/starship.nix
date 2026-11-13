@@ -1,6 +1,10 @@
-{ moduleWithSystem, ... }: {
-  flake.wrappers.starship = { wlib, lib, ... }: {
-    imports = [ wlib.wrapperModules.starship ];
+{moduleWithSystem, ...}: {
+  flake.wrappers.starship = {
+    wlib,
+    lib,
+    ...
+  }: {
+    imports = [wlib.wrapperModules.starship];
 
     env.STARSHIP_CONFIG = lib.mkForce "/etc/stylix/starship.toml";
 
@@ -152,8 +156,8 @@
   };
 
   flake.nixosModules.starship = moduleWithSystem (
-    { self', ... }: {
-      environment.systemPackages = [ self'.packages.starship ];
+    {self', ...}: {
+      environment.systemPackages = [self'.packages.starship];
     }
   );
 }

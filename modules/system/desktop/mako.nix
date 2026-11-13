@@ -4,7 +4,7 @@
   ...
 }: {
   flake.nixosModules.mako = moduleWithSystem ({self', ...}: {
-    environment.systemPackages = [ self'.packages.mako ];
+    environment.systemPackages = [self'.packages.mako];
   });
 
   perSystem = {pkgs, ...}: {
@@ -28,7 +28,7 @@
         "border-color" = "#89b4fa";
         "progress-color" = "over #313244";
 
-        "urgency=low" = { "border-color" = "#6c7086"; };
+        "urgency=low" = {"border-color" = "#6c7086";};
         "urgency=critical" = {
           "border-color" = "#f38ba8";
           "default-timeout" = 0;

@@ -1,10 +1,7 @@
-{ ... }: {
-  flake.nixosModules.filezilla = { pkgs, ... }: {
+{...}: {
+  flake.nixosModules.filezilla = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
-    filezilla
+      filezilla
     ];
   };
 }
-
-
-

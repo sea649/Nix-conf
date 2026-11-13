@@ -1,9 +1,7 @@
-{ ... }: {
-  flake.nixosModules.newsflash = { pkgs, ... }: {
+{...}: {
+  flake.nixosModules.newsflash = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
-    newsflash
+      newsflash
     ];
   };
 }
-
-

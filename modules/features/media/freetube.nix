@@ -1,10 +1,7 @@
-{ ... }: {
-  flake.nixosModules.freetube = { pkgs, ... }: {
+{...}: {
+  flake.nixosModules.freetube = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
-    freetube
+      freetube
     ];
   };
 }
-
-
-

@@ -1,6 +1,14 @@
-{ moduleWithSystem, lib, ... }: {
-  flake.wrappers.yazi = { wlib, config, ... }: {
-    imports = [ wlib.wrapperModules.yazi ];
+{
+  moduleWithSystem,
+  lib,
+  ...
+}: {
+  flake.wrappers.yazi = {
+    wlib,
+    config,
+    ...
+  }: {
+    imports = [wlib.wrapperModules.yazi];
 
     initLua = ./init.lua;
 
@@ -10,7 +18,7 @@
       theme = lib.importTOML ./theme.toml;
     };
     buildCommand.replaceVfs = {
-      after = [ "constructFiles" ];
+      after = ["constructFiles"];
       data = ''
         rm -f ${config.generatedConfig.placeholder}/vfs.toml
         ln -s /run/agenix/vfs ${config.generatedConfig.placeholder}/vfs.toml
@@ -36,7 +44,11 @@
   };
 
   flake.nixosModules.yazi = moduleWithSystem (
-    { self', pkgs, ... }: {
+    {
+      self',
+      pkgs,
+      ...
+    }: {
       environment.systemPackages = [
         self'.packages.yazi
         pkgs.zip

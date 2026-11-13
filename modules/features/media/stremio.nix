@@ -1,9 +1,7 @@
-{ ... }: {
-  flake.nixosModules.stremio = { pkgs, ... }: {
+{...}: {
+  flake.nixosModules.stremio = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
-    stremio-linux-shell
+      stremio-linux-shell
     ];
   };
 }
-
-

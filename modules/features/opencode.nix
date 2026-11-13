@@ -1,5 +1,5 @@
-{ self, ... }: {
-  flake.nixosModules.opencode = { pkgs, ... }: {
+{self, ...}: {
+  flake.nixosModules.opencode = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
       opencode
     ];

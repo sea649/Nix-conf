@@ -1,5 +1,5 @@
-{ ... }: {
-  flake.nixosModules.opencode-launcher = { pkgs, ... }: {
+{...}: {
+  flake.nixosModules.opencode-launcher = {pkgs, ...}: {
     environment.systemPackages = [
       (pkgs.writeShellApplication {
         name = "opencode-launcher";

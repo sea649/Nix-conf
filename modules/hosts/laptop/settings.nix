@@ -1,5 +1,5 @@
-{ ... }: {
-  flake.nixosModules.laptop-options = { ... }: {
+{...}: {
+  flake.nixosModules.laptop-options = {...}: {
     dotfiles = {
       username = "sea";
       email = " ";
@@ -24,7 +24,7 @@
       cursor = {
         theme = "Bibata-Modern-Ice";
         size = 24;
-        };
+      };
       umbrielConfig = ./umbriel.conf;
     };
   };

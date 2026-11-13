@@ -1,9 +1,9 @@
-{ inputs, ... }: {
-  imports = [ inputs.wrappers.flakeModules.wrappers ];
+{inputs, ...}: {
+  imports = [inputs.wrappers.flakeModules.wrappers];
 
-  systems = [ "x86_64-linux" ];
+  systems = ["x86_64-linux"];
   debug = true;
-  perSystem = { pkgs, ... }: {
+  perSystem = {pkgs, ...}: {
     formatter = pkgs.alejandra;
   };
 }

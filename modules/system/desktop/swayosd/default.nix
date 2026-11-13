@@ -3,16 +3,24 @@
   moduleWithSystem,
   ...
 }: {
-  flake.nixosModules.swayosd = moduleWithSystem ({ self', pkgs, ... }: {
+  flake.nixosModules.swayosd = moduleWithSystem ({
+    self',
+    pkgs,
+    ...
+  }: {
     environment.systemPackages = [
       self'.packages.swayosd
       pkgs.playerctl
     ];
-    services.udev.packages = [ self'.packages.swayosd ];
+    services.udev.packages = [self'.packages.swayosd];
   });
 
-  perSystem = { pkgs, self', ... }: {
-    packages.swayosd = inputs.wrappers.lib.wrapPackage ({ ... }: {
+  perSystem = {
+    pkgs,
+    self',
+    ...
+  }: {
+    packages.swayosd = inputs.wrappers.lib.wrapPackage ({...}: {
       inherit pkgs;
       package = pkgs.swayosd;
       wrapperVariants.server = {

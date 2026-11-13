@@ -1,5 +1,9 @@
-{ inputs, ... }: {
-  flake.nixosModules.swaybg = { pkgs, config, ... }: {
+{inputs, ...}: {
+  flake.nixosModules.swaybg = {
+    pkgs,
+    config,
+    ...
+  }: {
     environment.systemPackages = with pkgs; [
       (pkgs.writeShellApplication {
         name = "swaybg-start";

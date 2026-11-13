@@ -2,16 +2,15 @@
   moduleWithSystem,
   inputs,
   ...
-}:
-{
+}: {
   flake.nixosModules.waybar = moduleWithSystem (
-    { self', ... }: {
+    {self', ...}: {
       environment.systemPackages = with self'.packages; [
         waybar
       ];
     }
   );
-  perSystem = { pkgs, ... }: {
+  perSystem = {pkgs, ...}: {
     packages.waybar = inputs.wrappers.wrappers.waybar.wrap {
       inherit pkgs;
       "style.css".path = ./style.css;

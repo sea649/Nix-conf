@@ -1,5 +1,5 @@
-{ self, ... }: {
-  flake.nixosModules.system = { ... }: let
+{self, ...}: {
+  flake.nixosModules.system = {...}: let
     modules = with self.nixosModules; [
       audio
       agenix

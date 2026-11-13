@@ -1,5 +1,5 @@
-{ ... }: {
-  flake.nixosModules.setup = { config, ... }: {
+{...}: {
+  flake.nixosModules.setup = {config, ...}: {
     nixpkgs.hostPlatform = config.dotfiles.system;
     time.timeZone = config.dotfiles.timezone;
     i18n.defaultLocale = config.dotfiles.locale;

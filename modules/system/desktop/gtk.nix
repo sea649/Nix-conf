@@ -1,5 +1,9 @@
-{ ... }: {
-  flake.nixosModules.gtk = { pkgs, config, ... }: {
+{...}: {
+  flake.nixosModules.gtk = {
+    pkgs,
+    config,
+    ...
+  }: {
     environment.systemPackages =
       (with pkgs; [
         gnome-themes-extra

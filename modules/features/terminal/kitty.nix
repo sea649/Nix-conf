@@ -1,6 +1,10 @@
-{ moduleWithSystem, ... }: {
-  flake.wrappers.kitty = { wlib, lib, ... }: {
-    imports = [ wlib.wrapperModules.kitty ];
+{moduleWithSystem, ...}: {
+  flake.wrappers.kitty = {
+    wlib,
+    lib,
+    ...
+  }: {
+    imports = [wlib.wrapperModules.kitty];
 
     extraConfig = lib.mkAfter "include /etc/stylix/kitty.conf";
 
@@ -41,7 +45,7 @@
     };
   };
   flake.nixosModules.kitty = moduleWithSystem (
-    { self', ... }: {
+    {self', ...}: {
       environment.systemPackages = [self'.packages.kitty];
     }
   );

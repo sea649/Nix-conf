@@ -1,5 +1,5 @@
-{ ... }: {
-  flake.nixosModules.sync-ironfall = { pkgs, ... }: {
+{...}: {
+  flake.nixosModules.sync-ironfall = {pkgs, ...}: {
     environment.systemPackages = [
       (pkgs.writeShellApplication {
         name = "sync-ironfall";

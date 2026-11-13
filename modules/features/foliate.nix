@@ -1,11 +1,7 @@
-{ ... }: {
-  flake.nixosModules.foliate = { pkgs, ... }: {
+{...}: {
+  flake.nixosModules.foliate = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
-    foliate
+      foliate
     ];
   };
 }
-
-
-
-

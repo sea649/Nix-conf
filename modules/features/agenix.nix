@@ -1,11 +1,14 @@
-{ inputs, ... }: {
-  flake.nixosModules.agenix = { config, pkgs, ... }: {
-    imports = [ inputs.agenix.nixosModules.default ];
+{inputs, ...}: {
+  flake.nixosModules.agenix = {
+    config,
+    pkgs,
+    ...
+  }: {
+    imports = [inputs.agenix.nixosModules.default];
     age.identityPaths =
-      if config.dotfiles.impermanence.enable then
-        [ "${config.dotfiles.impermanence.persistPath}/etc/ssh/ssh_host_ed25519_key" ]
-      else
-        [ "/etc/ssh/ssh_host_ed25519_key" ];
+      if config.dotfiles.impermanence.enable
+      then ["${config.dotfiles.impermanence.persistPath}/etc/ssh/ssh_host_ed25519_key"]
+      else ["/etc/ssh/ssh_host_ed25519_key"];
 
     age.secrets = {
       vfs = {

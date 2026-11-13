@@ -138,7 +138,6 @@ notify-send "nixos-rebuild" "$(tail -n 6 /tmp/nh-switch.log | sed -E 's/\x1b\\[[
 description = "Nixos gc"
 prefix = "ncl"
 cmd = """
-
 umbriel msg window-set-primary-extent 0.365;
 umbriel msg window-set-secondary-extent 0.600;
 umbriel msg window-center;
@@ -158,6 +157,19 @@ umbriel msg window-center;
 umbriel msg window-toggle-pinned;
 nix flake update --flake ~/Nix-conf; and nh os switch 2>&1 | tee /tmp/flake-update.log;
 notify-send "flake-update" "$(tail -n 3 /tmp/flake-update.log | sed -E 's/\x1b\\[[0-9;]*m//g; s/^> //')"
+"""
+
+[[modules]]
+description = "Nixos fmt"
+prefix = "nfm"
+cmd = """
+umbriel msg window-set-primary-extent 0.365;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+umbriel msg window-toggle-pinned;
+cd ~/Nix-conf;
+nix fmt . 2>&1 | tee /tmp/nix-fmt.log;
+notify-send "nix fmt" "$(tail -n 3 /tmp/nix-fmt.log | sed -E 's/\x1b\\[[0-9;]*m//g; s/^> //')"
 """
 
 [[modules]]

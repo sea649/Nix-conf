@@ -1,5 +1,5 @@
-{ ... }: {
-  flake.nixosModules.services = { ... }: {
+{...}: {
+  flake.nixosModules.services = {...}: {
     services = {
       printing.enable = true;
       fstrim.enable = true;

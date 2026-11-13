@@ -1,6 +1,5 @@
-
-{ self, ... }: {
-  flake.nixosModules.browser = { config, ... }: let
+{self, ...}: {
+  flake.nixosModules.browser = {config, ...}: let
     modules = with self.nixosModules; [
       helium
       librewolf

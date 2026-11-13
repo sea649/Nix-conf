@@ -1,8 +1,7 @@
-{ ... }: {
-  flake.nixosModules.librewolf = { pkgs, ... }: {
+{...}: {
+  flake.nixosModules.librewolf = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
-    librewolf
+      librewolf
     ];
   };
 }
-

@@ -1,5 +1,9 @@
-{ ... }: {
-  flake.nixosModules.greeter = { config, pkgs, ... }: let
+{...}: {
+  flake.nixosModules.greeter = {
+    config,
+    pkgs,
+    ...
+  }: let
     tuigreet = pkgs.writeShellApplication {
       name = "tuigreet-start";
       runtimeInputs = [

@@ -1,6 +1,6 @@
-{ moduleWithSystem, ... }: {
-  flake.wrappers.git = { wlib, ... }: {
-    imports = [ wlib.wrapperModules.git ];
+{moduleWithSystem, ...}: {
+  flake.wrappers.git = {wlib, ...}: {
+    imports = [wlib.wrapperModules.git];
     settings = {
       core.editor = "nvim";
       init.defaultBranch = "main";
@@ -10,7 +10,7 @@
     };
   };
   flake.nixosModules.git = moduleWithSystem (
-    { self', ... }: {
+    {self', ...}: {
       programs.git = {
         enable = true;
         package = self'.packages.git;

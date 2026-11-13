@@ -1,9 +1,9 @@
-{ ... }: {
-  flake.nixosModules.prism-symlink = { pkgs, ... }: {
+{...}: {
+  flake.nixosModules.prism-symlink = {pkgs, ...}: {
     environment.systemPackages = [
       (pkgs.writeShellApplication {
         name = "prism-symlink";
-        runtimeInputs = [ pkgs.coreutils ];
+        runtimeInputs = [pkgs.coreutils];
         text = ''
           set -euo pipefail
           SCREENSHOTS_SRC="$HOME/Pictures/minecraft screenshots"

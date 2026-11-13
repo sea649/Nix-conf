@@ -1,5 +1,5 @@
-{ ... }: {
-  flake.nixosModules.steamdeck-options = { ... }: {
+{...}: {
+  flake.nixosModules.steamdeck-options = {...}: {
     dotfiles = {
       username = "sea";
       email = " ";

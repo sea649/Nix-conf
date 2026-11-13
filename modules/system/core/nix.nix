@@ -1,5 +1,5 @@
-{ inputs, ... }: {
-  flake.nixosModules.nix = { config, ... }: {
+{inputs, ...}: {
+  flake.nixosModules.nix = {config, ...}: {
     imports = [
       inputs.nix-index-database.nixosModules.nix-index
     ];
@@ -16,7 +16,7 @@
       auto-optimise-store = true;
       build-dir = "/nix/tmp";
     };
-    systemd.tmpfiles.rules = [ "d /nix/tmp 0755 root root -" ];
+    systemd.tmpfiles.rules = ["d /nix/tmp 0755 root root -"];
     programs.nh = {
       enable = true;
       flake = config.dotfiles.repoPath;

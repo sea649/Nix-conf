@@ -1,5 +1,9 @@
-{ ... }: {
-  flake.nixosModules.xsettingsd = { config, pkgs, ... }: {
+{...}: {
+  flake.nixosModules.xsettingsd = {
+    config,
+    pkgs,
+    ...
+  }: {
     environment.systemPackages = [pkgs.xsettingsd];
 
     environment.etc."xdg/xsettingsd/xsettingsd.conf".text = ''

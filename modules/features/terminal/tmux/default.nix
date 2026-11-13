@@ -1,4 +1,4 @@
-{ moduleWithSystem, ... }: let
+{moduleWithSystem, ...}: let
   tmuxConfig = builtins.readFile ./tmux.conf;
   tmuxConfigNoTheme =
     builtins.replaceStrings
@@ -6,8 +6,13 @@
     [""]
     tmuxConfig;
 in {
-  flake.wrappers.tmux = { wlib, lib, pkgs, ... }: {
-    imports = [ wlib.wrapperModules.tmux ];
+  flake.wrappers.tmux = {
+    wlib,
+    lib,
+    pkgs,
+    ...
+  }: {
+    imports = [wlib.wrapperModules.tmux];
 
     plugins = with pkgs.tmuxPlugins; [
       sensible
@@ -21,7 +26,7 @@ in {
     '';
   };
 
-  flake.nixosModules.tmux = moduleWithSystem ({ self', ... }: {
-    environment.systemPackages = [ self'.packages.tmux ];
+  flake.nixosModules.tmux = moduleWithSystem ({self', ...}: {
+    environment.systemPackages = [self'.packages.tmux];
   });
 }

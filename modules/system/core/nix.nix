@@ -1,8 +1,13 @@
 {inputs, ...}: {
-  flake.nixosModules.nix = {config, ...}: {
+  flake.nixosModules.nix = {
+    pkgs,
+    config,
+    ...
+  }: {
     imports = [
       inputs.nix-index-database.nixosModules.nix-index
     ];
+    # nix.package = pkgs.lix;
     nixpkgs.overlays = [
       inputs.umbriel.overlays.default
     ];

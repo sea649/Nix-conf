@@ -31,6 +31,7 @@ audio/ogg=mpv.desktop
 audio/flac=mpv.desktop
 audio/x-wav=mpv.desktop
 application/pdf=zathura.desktop
+x-scheme-handler/matrix=org.gnome.Fractal.desktop
 
 [Added Associations]
 inode/directory=blockbench.desktop;

@@ -61,6 +61,11 @@
         description = "Primary user account email.";
         default = " ";
       };
+      matrix = lib.mkOption {
+        type = lib.types.str;
+        description = "Matrix username";
+        default = "@sea:matrix.org";
+      };
       hostname = lib.mkOption {
         type = lib.types.str;
         description = "Machine name.";

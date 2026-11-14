@@ -159,6 +159,8 @@
           ".local/share/SEA-neovim-config"
           ".local/share/news-flash"
           ".local/share/sonora"
+          ".local/share/fractal"
+          ".local/share/iamb"
           ".local/share/stremio"
           ".local/share/zathura"
           ".local/share/com.github.johnfactotum.Foliate"
@@ -177,8 +179,6 @@
           ".local/state/keepassxc"
           ".local/state/nix"
           ".local/state/home-manager"
-
-          # NOTE: .cache is deliberately NOT persisted and dies on reboot.
         ];
       };
 

@@ -3,6 +3,7 @@
     dotfiles = {
       username = "sea";
       email = " ";
+      matrix = "@sea:matrix.org";
       hostname = "laptop";
       homeDirectory = "/home/sea";
       version = "26.11";

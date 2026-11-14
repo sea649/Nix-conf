@@ -26,6 +26,7 @@
         newsflash
         stremio
         discord
+        matrix
         ./_hardware-configuration.nix
       ]);
   };

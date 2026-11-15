@@ -24,6 +24,7 @@
       obs
       obsidian
       opencode
+      qbittorrent
       sonora
       thunar
       tuta

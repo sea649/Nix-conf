@@ -1,0 +1,58 @@
+[font]
+family = "Maple Mono NF ExtraBold"
+monospace = "Maple Mono NF"
+size = 13
+
+[pointer]
+double_click_ms = 400
+double_click_distance = 4
+
+[window]
+title_bar = "compositor"
+background_opacity = 0.5
+corner_radius = 0
+
+[icon]
+follow_accent = true
+
+[terminal]
+program = "kitty"
+
+[open]
+programs = true
+
+[[action]]
+name = "Extract Here"
+submenu = "Archive"
+patterns = ["*.zip", "*.7z", "*.rar", "*.tar*", "*.tgz", "*.txz", "*.tzst", "*.tbz2"]
+exec = "file-roller --extract-here %F"
+
+[[action]]
+name = "Extract to..."
+submenu = "Archive"
+patterns = ["*.zip", "*.7z", "*.rar", "*.tar*", "*.tgz", "*.txz", "*.tzst", "*.tbz2"]
+exec = "file-roller --extract %F"
+
+[[action]]
+name = "Create Archive..."
+submenu = "Archive"
+kinds = ["file", "folder"]
+exec = "file-roller --add %F"
+
+[[action]]
+name = "Copy Paths"
+kinds = ["file", "folder"]
+exec = ["sh", "-c", 'printf "%s\n" "$@" | wl-copy', "sh", "%F"]
+
+[[action]]
+name = "Open in Yazi"
+kinds = ["folder"]
+max = 1
+terminal = true
+exec = "yazi %F"
+
+[[action]]
+name = "Open in Yazi Here"
+background = true
+terminal = true
+exec = "yazi %d"

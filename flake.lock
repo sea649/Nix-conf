@@ -507,6 +507,26 @@
         "type": "github"
       }
     },
+    "nordend": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794765279,
+        "narHash": "sha256-rpbbW7jT10e26xsyF9pcDW49PqezL+3Vy2JFZ8IZiUo=",
+        "owner": "pankaspe",
+        "repo": "nordend-fm",
+        "rev": "e4326bfd9b6b4a1b14502782fa8287395e7c71c7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pankaspe",
+        "repo": "nordend-fm",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": [
@@ -570,6 +590,7 @@
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
+        "nordend": "nordend",
         "otter-launcher": "otter-launcher",
         "serein": "serein",
         "sonora": "sonora",

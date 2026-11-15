@@ -26,7 +26,7 @@
       opencode
       qbittorrent
       sonora
-      thunar
+      nordend
       tuta
 
       # -- Utils --

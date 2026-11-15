@@ -87,6 +87,10 @@
       url = "github:sonorahq/sonora";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nordend = {
+      url = "github:pankaspe/nordend-fm";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # -- Services --
     # entangled.url = "github:entangled/entangled.py?ref=v2.4.3";

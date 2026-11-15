@@ -913,7 +913,7 @@ umbriel_overview_type_to_launch_enabled = true
         "com.github.johnfactotum.Foliate",
         "com.stremio.Stremio",
         "obsidian",
-        "thunar",
+        "nordend",
         "zen",
         "blockbench"
     ]

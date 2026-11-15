@@ -148,7 +148,7 @@
   "tray_icon": true,
   "stay_awake": true,
   "language": "auto",
-  "font": "auto",
+  "font": "Maple Mono NF",
   "startup": "home",
   "local_folders": [
     "/home/sea/Music"
@@ -161,7 +161,7 @@
     "visualizer": true,
     "visualizer_style": "both",
     "visualizer_absolute": false,
-    "player_bar_layout": "classic",
+    "player_bar_layout": "centered",
     "player_bar_transparent": true,
     "icons": "lucide",
     "rounding": "square",

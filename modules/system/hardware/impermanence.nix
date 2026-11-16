@@ -65,13 +65,6 @@
           "wallpaper"
           "neovim"
           "org"
-          "pictures"
-          # "pictures" is the lowercase wallpaper dir on the laptop;
-          # on the Deck it is just an empty directory.
-
-          # Whitelist only what is actually used. Everything not listed here
-          # lives on the tmpfs root and is discarded on reboot, so stale app
-          # data / caches cannot accumulate on /persist.
 
           # secrets / identity
           {

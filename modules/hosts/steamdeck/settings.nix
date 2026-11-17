@@ -15,17 +15,11 @@
       wallpaper = "wallhaven-je8p85_1920x1200.png";
       kernel = "jovian";
       browser = "helium";
-      gtkTheme = "Adwaita-dark";
-      iconTheme = "breeze-dark";
       disk = {
         device = "/dev/disk/by-id/nvme-KINGSTON_OM3PGP41024P-A0_50026B72833B3C2B";
         tmpfsSize = "4G";
       };
       impermanence.enable = true;
-      cursor = {
-        theme = "Bibata-Modern-Ice";
-        size = 24;
-      };
       umbrielConfig = ./umbriel.conf;
     };
   };

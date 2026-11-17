@@ -18,10 +18,6 @@
       url = "github:NixOS/nixos-hardware";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     hjem = {
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,7 +33,6 @@
     impermanence = {
       url = "github:nix-community/impermanence";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
 
     # -- desktop environment --
@@ -49,19 +44,9 @@
       url = "git+https://github.com/noctalia-dev/umbriel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     wallpapers = {
       url = "git+https://codeberg.org/SEA1111111/wallpaper";
       flake = false;
-    };
-
-    neovim-conf = {
-      url = "git+https://codeberg.org/SEA1111111/neovim-config";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.wrappers.follows = "wrappers";
     };
 
     # -- Kernel --
@@ -79,6 +64,11 @@
       url = "github:kuokuo123/otter-launcher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-conf = {
+      url = "git+https://codeberg.org/SEA1111111/neovim-config";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.wrappers.follows = "wrappers";
+    };
     serein = {
       url = "github:ViceVerse-cz/Serein";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -87,8 +77,14 @@
       url = "github:sonorahq/sonora";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # -- File managers --
     nordend = {
       url = "github:pankaspe/nordend-fm";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    luciole = {
+      url = "github:noctalia-dev/luciole";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

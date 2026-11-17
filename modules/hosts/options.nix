@@ -35,20 +35,6 @@
       "fr"
       "jp"
     ];
-    gtkThemes = [
-      "Adwaita-dark"
-      "Colloid-dark"
-      "Orchis-dark"
-      "Breeze-Dark"
-    ];
-    iconThemes = [
-      "Papirus-Dark"
-      "Candy"
-      "WhiteSur"
-      "Tela"
-      "Kora"
-      "breeze-dark"
-    ];
   in {
     options.dotfiles = {
       username = lib.mkOption {
@@ -169,32 +155,6 @@
         type = lib.types.enum browser;
         description = "Main browser.";
         default = "helium";
-      };
-      gtkTheme = lib.mkOption {
-        type = lib.types.enum gtkThemes;
-        description = "GTK theme name.";
-        default = "Adwaita-dark";
-      };
-      iconTheme = lib.mkOption {
-        type = lib.types.enum iconThemes;
-        description = "Icon theme name.";
-        default = "breeze-dark";
-      };
-      cursor = {
-        theme = lib.mkOption {
-          type = lib.types.str;
-          default = "Bibata-Modern-Ice";
-        };
-
-        package = lib.mkOption {
-          type = lib.types.package;
-          default = pkgs.bibata-cursors;
-        };
-
-        size = lib.mkOption {
-          type = lib.types.int;
-          default = 24;
-        };
       };
     };
   };

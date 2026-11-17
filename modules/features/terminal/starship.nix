@@ -1,15 +1,12 @@
 {moduleWithSystem, ...}: {
   flake.wrappers.starship = {
     wlib,
-    lib,
     ...
   }: {
     imports = [wlib.wrapperModules.starship];
 
-    env.STARSHIP_CONFIG = lib.mkForce "/etc/stylix/starship.toml";
-
     settings = {
-      palette = "noctalia";
+      palette = "base16";
       add_newline = true;
       format = ''
         ╭─$cmd_duration $directory$git_branch$fill$character
@@ -117,40 +114,27 @@
         format = "[](bold fg:252)[󰪢 $duration](bold bg:252 fg:235)[](bold fg:252)";
       };
 
-      palettes.noctalia = {
-        blue = "#c7cd5b";
-        red = "#ffb4ab";
-        green = "#c8c9a6";
-        yellow = "#a3d0bf";
-        cyan = "#c8c9a6";
-        magenta = "#c7cd5b";
-        white = "#e5e2da";
-        black = "#14140f";
+      palettes.base16 = {
+        black = "#1e1e2e";
+        red = "#f38ba8";
+        green = "#a6e3a1";
+        yellow = "#f9e2af";
+        blue = "#89b4fa";
+        magenta = "#cba6f7";
+        cyan = "#94e2d5";
+        white = "#cdd6f4";
 
-        rosewater = "#a3d0bf";
-        flamingo = "#a3d0bf";
-        pink = "#c7cd5b";
-        mauve = "#5e6300";
-        maroon = "#ffb4ab";
-        peach = "#a3d0bf";
-        teal = "#c8c9a6";
-        sky = "#c8c9a6";
-        sapphire = "#c8c9a6";
-        lavender = "#5e6300";
+        "bright-black" = "#6c7086";
+        "bright-red" = "#fab387";
+        "bright-green" = "#f9e2af";
+        "bright-yellow" = "#a6e3a1";
+        "bright-blue" = "#89b4fa";
+        "bright-magenta" = "#cba6f7";
+        "bright-cyan" = "#94e2d5";
+        "bright-white" = "#b4befe";
 
-        text = "#e5e2da";
-        subtext1 = "#c9c7b6";
-        subtext0 = "#929182";
-
-        overlay2 = "#929182";
-        overlay1 = "#c9c7b6";
-        overlay0 = "#47473b";
-        surface2 = "#47473b";
-        surface1 = "#14140f";
-        surface0 = "#14140f";
-        base = "#14140f";
-        mantle = "#14140f";
-        crust = "#08372b";
+        orange = "#fab387";
+        brown = "#f9e2af";
       };
     };
   };

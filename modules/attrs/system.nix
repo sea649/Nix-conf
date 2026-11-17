@@ -4,6 +4,7 @@
       audio
       agenix
       bootloader
+      console
       disko
       fonts
       hardware

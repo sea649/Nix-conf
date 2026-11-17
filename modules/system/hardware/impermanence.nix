@@ -126,6 +126,7 @@
           ".config/mpv"
           ".config/Thunar"
           ".config/nordend"
+          ".config/luciole"
           ".config/fsel"
           ".config/fuzzel"
           ".config/hypr"
@@ -137,7 +138,6 @@
           ".config/qt5ct"
           ".config/qt6ct"
           ".config/qtengine"
-          ".config/stylix"
           ".config/gtk-3.0"
           ".config/gtk-4.0"
 
@@ -170,10 +170,10 @@
           ".local/state/syncthing-versions"
           ".local/state/opencode"
           ".local/state/nordend"
+          ".local/state/luciole"
           ".local/state/Heroic"
           ".local/state/keepassxc"
           ".local/state/nix"
-          ".local/state/home-manager"
         ];
       };
 

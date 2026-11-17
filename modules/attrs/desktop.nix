@@ -26,7 +26,7 @@
       opencode
       qbittorrent
       sonora
-      nordend
+      luciole
       tuta
 
       # -- Utils --
@@ -34,7 +34,6 @@
       desktop-utils
       fsel
       gtk
-      stylix
       xkg
       xsettingsd
     ];

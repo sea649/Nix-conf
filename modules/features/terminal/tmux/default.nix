@@ -21,7 +21,7 @@ in {
     ];
 
     configAfter = lib.mkAfter ''
-      source-file /etc/stylix/tmux.conf
+      source-file ${./catppuccin.conf}
       ${tmuxConfigNoTheme}
     '';
   };

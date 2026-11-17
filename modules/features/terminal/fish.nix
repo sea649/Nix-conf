@@ -34,9 +34,7 @@
 
     configFile.content = ''
         status is-interactive; and begin
-          if test -f /etc/stylix/fish.fish
-            source /etc/stylix/fish.fish
-          end
+          source ${./catppuccin.fish}
 
           microfetch
           set fish_greeting ""

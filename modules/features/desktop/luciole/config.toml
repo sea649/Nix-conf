@@ -1,0 +1,62 @@
+schema_version = 1
+
+[browser]
+view_mode = "miller"
+grid_icon_size = 64
+density = "compact"
+filename_truncation = "middle"
+show_size_caption = true
+show_type_caption = false
+show_modified_caption = false
+show_emblems = true
+show_hidden = true
+show_backups = true
+always_show_tab_bar = false
+always_show_status_bar = true
+compact_menus = true
+background_opacity = 0.5
+corner_radius_scale = 0.0
+activation_mode = "double_click"
+typing_mode = "filter"
+confirm_permanent_deletion = true
+switch_to_new_tab = true
+restore_last_window = false
+terminal_command = "kitty -e"
+sort_by = "name"
+sort_descending = false
+directories_first = true
+show_sidebar = true
+sidebar_width = 206
+sidebar_tree = false
+show_drives = true
+expandable_folders = true
+show_preview = true
+chooser_show_preview = true
+preview_width = 320
+miller_column_width = 260
+miller_show_parents = false
+
+name_column_width =	0
+type_column_width =	152
+size_column_width =	118
+modified_column_width =	156
+accessed_column_width =	156
+created_column_width = 156
+owner_column_width = 128
+group_column_width = 128
+permissions_column_width = 112
+location_column_width =	260
+
+show_type_column = false
+show_size_column = true
+show_modified_column = false
+show_accessed_column = false
+show_created_column = false
+show_owner_column = true
+show_group_column = true
+show_permissions_column = true
+show_location_column = false
+
+thumbnail_policy = "local"
+thumbnail_max_file_mib = 64	
+thumbnail_cache_mib = 1024

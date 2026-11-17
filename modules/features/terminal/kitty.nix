@@ -1,12 +1,9 @@
 {moduleWithSystem, ...}: {
   flake.wrappers.kitty = {
     wlib,
-    lib,
     ...
   }: {
     imports = [wlib.wrapperModules.kitty];
-
-    extraConfig = lib.mkAfter "include /etc/stylix/kitty.conf";
 
     settings = {
       shell = "fish";
@@ -16,6 +13,45 @@
       cursor_trail_decay = "0.1 0.4";
       cursor_trail_start_threshold = 2;
       tab_bar_style = "powerline";
+
+      # Catppuccin Mocha (base16)
+      background = "#1e1e2e";
+      foreground = "#cdd6f4";
+      selection_background = "#6c7086";
+      selection_foreground = "#cdd6f4";
+      cursor = "#cdd6f4";
+      cursor_text_color = "#1e1e2e";
+      url_color = "#a6adc8";
+      active_border_color = "#6c7086";
+      inactive_border_color = "#313244";
+      wayland_titlebar_color = "#1e1e2e";
+      active_tab_background = "#1e1e2e";
+      active_tab_foreground = "#cdd6f4";
+      inactive_tab_background = "#313244";
+      inactive_tab_foreground = "#a6adc8";
+      tab_bar_background = "#313244";
+      color0 = "#1e1e2e";
+      color1 = "#f38ba8";
+      color2 = "#a6e3a1";
+      color3 = "#f9e2af";
+      color4 = "#89b4fa";
+      color5 = "#cba6f7";
+      color6 = "#94e2d5";
+      color7 = "#cdd6f4";
+      color8 = "#45475a";
+      color9 = "#f38ba8";
+      color10 = "#a6e3a1";
+      color11 = "#f9e2af";
+      color12 = "#89b4fa";
+      color13 = "#cba6f7";
+      color14 = "#94e2d5";
+      color15 = "#b4befe";
+      color16 = "#fab387";
+      color17 = "#f2cdcd";
+      color18 = "#313244";
+      color19 = "#45475a";
+      color20 = "#a6adc8";
+      color21 = "#f5e0dc";
     };
     font.name = "Maple Mono NF";
     keybindings = {

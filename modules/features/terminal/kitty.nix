@@ -1,8 +1,5 @@
 {moduleWithSystem, ...}: {
-  flake.wrappers.kitty = {
-    wlib,
-    ...
-  }: {
+  flake.wrappers.kitty = {wlib, ...}: {
     imports = [wlib.wrapperModules.kitty];
 
     settings = {

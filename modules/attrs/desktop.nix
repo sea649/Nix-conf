@@ -36,6 +36,7 @@
       gtk
       xkg
       xsettingsd
+      devenv
     ];
   in {
     imports = modules;

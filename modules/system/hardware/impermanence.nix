@@ -65,6 +65,7 @@
           "wallpaper"
           "neovim"
           "org"
+          "Backups"
 
           # secrets / identity
           {

@@ -16,7 +16,7 @@ external_editor = "nvim" # ctrl+x ctrl+e (or v in vi normal mode)
 padding = [0, 1, 0, 1] # pad with columns/lines, [top, right, down, left]
 # use three quotes to write longer codes; ANSI color codes and shell expansion are allowed
 header = """
-\x1b[1;38;2;203;166;247m$USER@nixos\x1b[0m
+\x1b[1;38;2;203;166;247msea@nixos\x1b[0m
 """
 # available [color options](https://docs.rs/ratatui/latest/ratatui/prelude/enum.Color.html)
 header_color = "blue"

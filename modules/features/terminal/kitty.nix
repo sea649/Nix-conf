@@ -76,6 +76,7 @@
       "ctrl+alt+t" = "new_tab_with_cwd";
       "ctrl+alt+w" = "close_tab";
     };
+    flags."--single-instance" = true;
   };
   flake.nixosModules.kitty = moduleWithSystem (
     {self', ...}: {

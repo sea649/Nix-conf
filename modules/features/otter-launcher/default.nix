@@ -1,22 +1,24 @@
 {
   inputs,
   moduleWithSystem,
+  self,
   ...
 }: {
   flake.nixosModules.otter-launcher = moduleWithSystem (
     {
       self',
-      pkgs,
       ...
     }: {
       environment.systemPackages = [
         self'.packages.otter-launcher
       ];
+      imports = [
+        self.nixosModules.nixos-generation-switch
+      ];
     }
   );
   perSystem = {
     pkgs,
-    lib,
     self',
     inputs',
     ...

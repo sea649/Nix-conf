@@ -146,6 +146,16 @@ nh clean all 2>&1 | tee /tmp/nix-gc.log;
 notify-send "nix gc" "$(tail -n 3 /tmp/nix-gc.log | sed -E 's/\x1b\\[[0-9;]*m//g; s/^> //')"
 """
 
+[[modules]]
+description = "Nixos generation switch"
+prefix = "ngs"
+cmd = """
+umbriel msg window-set-primary-extent 0.365;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+umbriel msg window-toggle-pinned;
+nixos-generation-switch
+"""
 
 [[modules]]
 description = "flake update"

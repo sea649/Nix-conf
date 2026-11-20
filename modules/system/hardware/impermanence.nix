@@ -46,6 +46,7 @@
           "/var/lib/alsa"
           "/var/lib/cups"
           "/var/lib/hjem"
+          "/var/lib/ly"
           "/var/lib/power-profiles-daemon"
           # "/var/lib/fprint"
           "/var/log"

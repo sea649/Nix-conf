@@ -555,11 +555,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1794067397,
-        "narHash": "sha256-5mWHPnc2zB1zoZdUitDx5Ro1sF5zVkgm82wmdQRZ8t4=",
+        "lastModified": 1795186425,
+        "narHash": "sha256-JerKdfqbmoI8dWnsjeqRoZrE4AHqHEChJGcU6g+uTQM=",
         "ref": "refs/heads/main",
-        "rev": "38bbf2614b181ee49cd74f5cd052bdc2adb6d524",
-        "revCount": 1,
+        "rev": "93fb3a63392cbf6ff54701dc657e549ae1476cce",
+        "revCount": 2,
         "type": "git",
         "url": "https://codeberg.org/SEA1111111/wallpaper"
       },

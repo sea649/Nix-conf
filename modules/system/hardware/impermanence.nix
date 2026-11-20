@@ -119,6 +119,8 @@
           ".config/zellij"
           ".config/kitty"
           ".config/fish"
+          ".local/share/zoxide"
+          ".local/state/fzf"
           ".config/tmux"
           ".config/btop"
           ".config/bottom"

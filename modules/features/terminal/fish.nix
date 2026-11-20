@@ -7,6 +7,8 @@
   }: {
     imports = [wlib.wrapperModules.fish];
 
+    flags."--no-config" = false;
+
     runtimePkgs = [
       pkgs.bat
       pkgs.fzf
@@ -63,9 +65,6 @@
           builtin cd -- "$cwd"
         end
         command rm -f -- "$tmp"
-      end
-      if test -d /etc/fish/generated_completions
-        set -a fish_complete_path /etc/fish/generated_completions
       end
     '';
   };

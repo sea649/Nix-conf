@@ -25,7 +25,7 @@
 
         "background-color" = "#1e1e2eee";
         "text-color" = "#cdd6f4";
-        "border-color" = "#89b4fa";
+        "border-color" = "#cba6f7";
         "progress-color" = "over #313244";
 
         "urgency=low" = {"border-color" = "#6c7086";};

@@ -34,6 +34,7 @@
       desktop-utils
       fsel
       gtk
+      qt
       xkg
       xsettingsd
       devenv

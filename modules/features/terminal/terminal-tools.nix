@@ -11,7 +11,6 @@
       cliphist
       wl-clipboard
       microfetch
-      bottom
       glow
       yt-dlp
       gh

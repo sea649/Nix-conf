@@ -5,6 +5,7 @@
       tmux
       yazi
       neovim
+      bottom
       terminal-tools
     ];
   in {

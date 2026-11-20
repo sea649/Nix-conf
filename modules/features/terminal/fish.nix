@@ -24,8 +24,8 @@
       ncl = "nh clean all";
       cat = "bat";
       v = "nvim";
-      ni = "cd ~/Nix-conf/";
-      niv = "cd ~/Nix-conf/; nvim";
+      ni = "z ~/Nix-conf/";
+      niv = "z ~/Nix-conf/; nvim";
     };
 
     env = {

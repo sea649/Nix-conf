@@ -165,7 +165,8 @@ umbriel msg window-set-primary-extent 0.365;
 umbriel msg window-set-secondary-extent 0.600;
 umbriel msg window-center;
 umbriel msg window-toggle-pinned;
-nix flake update --flake ~/Nix-conf; and nh os switch 2>&1 | tee /tmp/flake-update.log;
+nix flake update --flake ~/Nix-conf;
+nh os switch 2>&1 | tee /tmp/flake-update.log;
 notify-send "flake-update" "$(tail -n 3 /tmp/flake-update.log | sed -E 's/\x1b\\[[0-9;]*m//g; s/^> //')"
 """
 

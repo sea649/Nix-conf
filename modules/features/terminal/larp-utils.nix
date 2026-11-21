@@ -4,7 +4,11 @@
       cmatrix
       cowsay
       pipes-rs
+      onefetch
+      cava
+      tty-clock
+      clock-rs
+      lavat
     ];
   };
 }
-

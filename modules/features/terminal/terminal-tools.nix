@@ -14,6 +14,7 @@
       glow
       yt-dlp
       gh
+      btop
       zellij
     ];
   };

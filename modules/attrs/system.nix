@@ -19,6 +19,7 @@
       git
       delta
       syncthing
+      readme-onefetch
       hjem
     ];
   in {

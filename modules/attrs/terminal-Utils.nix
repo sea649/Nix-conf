@@ -6,6 +6,7 @@
       yazi
       neovim
       bottom
+      lazygit
       terminal-tools
     ];
   in {

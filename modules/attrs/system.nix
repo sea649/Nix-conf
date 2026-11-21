@@ -17,6 +17,7 @@
       user
       fish
       git
+      delta
       syncthing
       hjem
     ];

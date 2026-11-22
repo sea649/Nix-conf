@@ -11,11 +11,15 @@
     }
   );
 
-  perSystem = {pkgs, ...}: {
+  perSystem = {
+    pkgs,
+    inputs',
+    ...
+  }: {
     packages.fsel = inputs.wrappers.lib.wrapPackage (
       {...}: {
         inherit pkgs;
-        package = pkgs.fsel;
+        package = inputs'.fsel.packages.default;
         flags = {
           "-c" = ./config.toml;
         };

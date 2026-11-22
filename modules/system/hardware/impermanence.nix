@@ -104,7 +104,6 @@
           ".config/vesktop"
           ".config/concord"
           ".config/news-flash"
-          ".config/sonora"
           ".config/syncthing"
           ".config/opencode"
 
@@ -144,7 +143,6 @@
           ".local/share/nvim-personal"
           ".local/share/SEA-neovim-config"
           ".local/share/news-flash"
-          ".local/share/sonora"
           ".local/share/fractal"
           ".local/share/iamb"
           ".local/share/stremio"

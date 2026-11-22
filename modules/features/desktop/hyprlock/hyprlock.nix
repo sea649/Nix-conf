@@ -67,7 +67,7 @@
         # USER AVATAR
         image {
           monitor =
-          path = $HOME/Nix-conf/assets/noctalia/avatar/avatar.png
+          path = $HOME/Nix-conf/assets/avatar.png
           size = 100
           border_color = $accent
           position = 0, 75

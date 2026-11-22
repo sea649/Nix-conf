@@ -103,7 +103,7 @@ cmd = """
 umbriel msg window-set-primary-extent 0.365;
 umbriel msg window-set-secondary-extent 0.600;
 umbriel msg window-center;
-nmtui
+wifitui
 """
 [[modules]]
 description = "set power profile"
@@ -212,6 +212,17 @@ makoctl history -j | jq -r '.[] | [
 description = "toggle night light"
 prefix = "nl"
 cmd = "pkill -USR1 -x wlsunset"
+
+[[modules]]
+description = "fd file search"
+prefix = "fd"
+cmd = """
+umbriel msg window-set-primary-extent 0.365;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+yazi "$(fd {} | fsel --dmenu --preview 'bat --color=never --style=numbers --paging=never --line-range=:200 -- "$FSEL_PREVIEW_ITEM"')"
+"""
+with_argument = true
 
 [[modules]]
 description = "clipboard history wipe"

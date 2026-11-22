@@ -25,7 +25,6 @@
       obsidian
       opencode
       qbittorrent
-      sonora
       luciole
       tuta
 

@@ -20,21 +20,6 @@
         "type": "github"
       }
     },
-    "crane": {
-      "locked": {
-        "lastModified": 1793836618,
-        "narHash": "sha256-TREenflwEjxOSq292FYwbc3kEm7TDRtXCZRNWEdjBmg=",
-        "owner": "ipetkov",
-        "repo": "crane",
-        "rev": "79fd63528501446749c09f08cad486a58c7d173e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ipetkov",
-        "repo": "crane",
-        "type": "github"
-      }
-    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -52,6 +37,28 @@
       "original": {
         "owner": "nix-community",
         "repo": "disko",
+        "type": "github"
+      }
+    },
+    "fenix": {
+      "inputs": {
+        "nixpkgs": [
+          "fsel",
+          "nixpkgs"
+        ],
+        "rust-analyzer-src": "rust-analyzer-src"
+      },
+      "locked": {
+        "lastModified": 1792926139,
+        "narHash": "sha256-uLMpwLKdV5U1966bkbe5DzC+5Gp8O6g+wjydKmih7zQ=",
+        "owner": "nix-community",
+        "repo": "fenix",
+        "rev": "44ec3e059cf1631403a0faca34106be5fdb17631",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "fenix",
         "type": "github"
       }
     },
@@ -109,6 +116,47 @@
       "original": {
         "owner": "hercules-ci",
         "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1791914995,
+        "narHash": "sha256-Zf/xfQEAasnwnmEfHqW/4hjDE/s44yn2hD4RuVIZRjA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b7a79d3fea1e214f6d668d521cecec0c01e26544",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "fsel": {
+      "inputs": {
+        "fenix": "fenix",
+        "flake-utils": "flake-utils",
+        "naersk": "naersk",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794393526,
+        "narHash": "sha256-7nIXIjq5LYWCE0ef+e9Tepz3rfwbWRNa3yTgNm35qBQ=",
+        "owner": "Mjoyufull",
+        "repo": "fsel",
+        "rev": "fba08dc958b8edee553f638b9444cb601b824e8e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mjoyufull",
+        "repo": "fsel",
         "type": "github"
       }
     },
@@ -271,6 +319,31 @@
         "type": "github"
       }
     },
+    "naersk": {
+      "inputs": {
+        "fenix": [
+          "fsel",
+          "fenix"
+        ],
+        "nixpkgs": [
+          "fsel",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792096940,
+        "narHash": "sha256-75jRkpI2iya4fd/FPOyE9+BuiAp/2sV/hYtwrj6IyME=",
+        "owner": "nix-community",
+        "repo": "naersk",
+        "rev": "5c7912af5141e323ff0bd25c95bd6d3b889b8c53",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "naersk",
+        "type": "github"
+      }
+    },
     "neovim-conf": {
       "inputs": {
         "nixpkgs": [
@@ -428,7 +501,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems"
+        "systems": "systems_2"
       },
       "locked": {
         "lastModified": 1794711303,
@@ -449,6 +522,7 @@
         "agenix": "agenix",
         "disko": "disko",
         "flake-parts": "flake-parts",
+        "fsel": "fsel",
         "helium": "helium",
         "hjem": "hjem",
         "impermanence": "impermanence",
@@ -462,30 +536,26 @@
         "nordend": "nordend",
         "otter-launcher": "otter-launcher",
         "serein": "serein",
-        "sonora": "sonora",
         "umbriel": "umbriel",
         "wallpapers": "wallpapers",
-        "wrappers": "wrappers"
+        "wrappers": "wrappers",
+        "yazi-conf": "yazi-conf"
       }
     },
-    "rust-overlay": {
-      "inputs": {
-        "nixpkgs": [
-          "sonora",
-          "nixpkgs"
-        ]
-      },
+    "rust-analyzer-src": {
+      "flake": false,
       "locked": {
-        "lastModified": 1789196581,
-        "narHash": "sha256-yJr1Bt4fKkKIpPYbsKGqJ0VFdoDnURgRwuffmBQ2WzY=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "228ecefb6329d5a531b77b46b581a2f0c26ee056",
+        "lastModified": 1792691653,
+        "narHash": "sha256-3/DMV3Lpmthk6OV2b7bJSJ5Okouyvl755YZENyLwllo=",
+        "owner": "rust-lang",
+        "repo": "rust-analyzer",
+        "rev": "0c4d74686b21f2b3bd8872b6d3cf36ad2e740d49",
         "type": "github"
       },
       "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
+        "owner": "rust-lang",
+        "ref": "nightly",
+        "repo": "rust-analyzer",
         "type": "github"
       }
     },
@@ -510,29 +580,22 @@
         "type": "github"
       }
     },
-    "sonora": {
-      "inputs": {
-        "crane": "crane",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": "rust-overlay"
-      },
+    "systems": {
       "locked": {
-        "lastModified": 1795221586,
-        "narHash": "sha256-4KauAsSlHKHz6KUB0YD+nLcRMQvEcliZHu1yLxuJ0JU=",
-        "owner": "sonorahq",
-        "repo": "sonora",
-        "rev": "e8119acf2033d83310f7a37f96273ad0dd4e7029",
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
         "type": "github"
       },
       "original": {
-        "owner": "sonorahq",
-        "repo": "sonora",
+        "owner": "nix-systems",
+        "repo": "default",
         "type": "github"
       }
     },
-    "systems": {
+    "systems_2": {
       "locked": {
         "lastModified": 1689347949,
         "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
@@ -623,6 +686,32 @@
         "owner": "noctalia-dev",
         "repo": "xdg-desktop-portal-umbriel",
         "type": "github"
+      }
+    },
+    "yazi-conf": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "wrappers": [
+          "wrappers"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795362856,
+        "narHash": "sha256-MH5yoRg+hHo3k5VL1GnzukHRXpEIPGVx6zpmV76mMak=",
+        "ref": "refs/heads/main",
+        "rev": "71ef4c7881c369774a59486199c5ba1085d4fe2b",
+        "revCount": 1,
+        "type": "git",
+        "url": "https://codeberg.org/SEA1111111/yazi-config"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/SEA1111111/yazi-config"
       }
     }
   },

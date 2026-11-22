@@ -66,15 +66,25 @@
     };
     neovim-conf = {
       url = "git+https://codeberg.org/SEA1111111/neovim-config";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.wrappers.follows = "wrappers";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        wrappers.follows = "wrappers";
+      };
+    };
+    yazi-conf = {
+      url = "git+https://codeberg.org/SEA1111111/yazi-config";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        wrappers.follows = "wrappers";
+        flake-parts.follows = "flake-parts";
+      };
     };
     serein = {
       url = "github:ViceVerse-cz/Serein";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sonora = {
-      url = "github:sonorahq/sonora";
+    fsel = {
+      url = "github:Mjoyufull/fsel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -13,11 +13,6 @@
       prismlauncher
       heroic
     ];
-    hjem.users.${config.dotfiles.username}.files = {
-      ".local/share/PrismLauncher/catpacks".source = ../../assets/prismlauncher/catpacks;
-      ".local/share/PrismLauncher/themes".source = ../../assets/prismlauncher/themes;
-      ".local/share/PrismLauncher/iconthemes".source = ../../assets/prismlauncher/iconthemes;
-    };
     programs = {
       gamemode.enable = true;
       gamescope.enable = true;

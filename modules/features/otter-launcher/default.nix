@@ -33,6 +33,7 @@
               bluetui
               wiremix
               networkmanager
+              wifitui
             ];
             flags = {
               "-c" = final-config;

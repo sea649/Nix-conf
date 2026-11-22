@@ -40,7 +40,7 @@
 
           microfetch
           set fish_greeting ""
-          starship init fish | source
+          oh-my-posh init fish | source
           fzf --fish | source
           zoxide init fish | source
           bind \cg git-branch-switch

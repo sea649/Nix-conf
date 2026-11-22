@@ -1,7 +1,7 @@
 {self, ...}: {
   flake.nixosModules.terminal-utils = {...}: let
     modules = with self.nixosModules; [
-      starship
+      oh-my-posh
       tmux
       yazi
       neovim

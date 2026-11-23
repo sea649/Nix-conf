@@ -3,7 +3,7 @@
     imports = [wlib.wrapperModules.kitty];
 
     settings = {
-      shell = "fish";
+      shell = "zsh";
       background_opacity = "0.85";
       confirm_os_window_close = 0;
       # cursor_trail = 100;

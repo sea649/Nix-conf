@@ -114,7 +114,6 @@
           ".config/nvim-personal"
           ".config/SEA-neovim-config"
           ".config/zellij"
-          ".config/fish"
           ".local/share/zoxide"
           ".local/state/fzf"
           ".config/btop"
@@ -149,7 +148,6 @@
           ".local/share/stremio"
           ".local/share/zathura"
           ".local/share/com.github.johnfactotum.Foliate"
-          ".local/share/fish"
           ".local/share/PrismLauncher"
           ".local/share/nix"
           ".local/share/icons"
@@ -165,6 +163,7 @@
           ".local/state/Heroic"
           ".local/state/keepassxc"
           ".local/state/nix"
+          ".local/state/zsh"
         ];
       };
 

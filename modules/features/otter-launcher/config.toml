@@ -168,7 +168,7 @@ notify-send "flake-update" "$body"
 description = "nix shell"
 prefix = "nsh"
 cmd = """
-kitty -e fish -c 'cd ~/Nix-conf; and IN_NIX_SHELL=impure nix shell nixpkgs#{}'
+kitty -e zsh -c 'cd ~/Nix-conf && IN_NIX_SHELL=impure nix shell nixpkgs#{}'
 """
 with_argument = true
 unbind_proc = true

@@ -14,7 +14,6 @@
         "audio"
         "video"
       ];
-      shell = config.programs.fish.package;
     };
   };
 }

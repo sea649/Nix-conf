@@ -15,7 +15,7 @@
       services
       setup
       user
-      fish
+      zsh
       git
       delta
       syncthing

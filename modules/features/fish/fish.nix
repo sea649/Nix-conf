@@ -2,36 +2,31 @@
   flake.wrappers.fish = {
     wlib,
     pkgs,
-    config,
+    lib,
+    self',
     ...
   }: {
     imports = [wlib.wrapperModules.fish];
 
     flags."--no-config" = false;
 
-    runtimePkgs = [
-      pkgs.bat
-      pkgs.fzf
-      pkgs.zoxide
-      pkgs.microfetch
-      pkgs.nh
-      pkgs.git
+    runtimePkgs = with pkgs; [
+      bat
+      carapace
+      fzf
+      zoxide
+      microfetch
+      nh
+      git
     ];
 
     abbreviations = {
-      nos = "nh os switch";
-      nou = "nix flake update --flake ~/Nix-conf; and nh os switch";
-      ncl = "nh clean all";
-      cat = "bat";
-      v = "nvim";
+      cd.function = lib.getExe pkgs.zoxide;
+      cat.function = lib.getExe pkgs.bat;
+      v.function = lib.getExe self'.packages.nvim;
+      man = "man -P \"${lib.getExe pkgs.bat} -p\"";
       ni = "z ~/Nix-conf/";
-      niv = "z ~/Nix-conf/; nvim";
-    };
-
-    env = {
-      FZF_DEFAULT_OPTS = "--height 40%";
-      MANROFFOPT = "-c";
-      MANPAGER = "sh -c 'col -bx | nvim -c \"set ft=man\" -'";
+      niv = "z ~/Nix-conf/ && nvim";
     };
 
     configFile.content = ''
@@ -50,12 +45,14 @@
             source "$KITTY_INSTALLATION_DIR/shell-integration/fish/vendor_conf.d/kitty-shell-integration.fish"
             set --prepend fish_complete_path "$KITTY_INSTALLATION_DIR/shell-integration/fish/vendor_completions.d"
           end
+
+          set -gx CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense'
+          carapace _carapace fish | source
         end
 
-        function git-branch-switch
-          set -l branch (git branch --sort=-committerdate | fzf --height 40%)
-          and test -n "$branch"
-          and git checkout (string trim "$branch")
+        function nsh 
+          cd ~/Nix-conf
+          IN_NIX_SHELL=impure nix shell nixpkgs#$argv
         end
 
       function y

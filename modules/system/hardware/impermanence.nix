@@ -143,6 +143,7 @@
           ".local/share/nvim-personal"
           ".local/share/SEA-neovim-config"
           ".local/share/news-flash"
+          "/home/sea/.local/share/serein-development"
           ".local/share/fractal"
           ".local/share/iamb"
           ".local/share/stremio"

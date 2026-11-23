@@ -26,3 +26,11 @@ set -U fish_pager_color_completion normal
 set -U fish_pager_color_description yellow --dim
 set -U fish_pager_color_prefix white --bold
 set -U fish_pager_color_progress brwhite --background=cyan
+
+# pager
+set -U fish_pager_color_selected_background
+set -U fish_pager_color_selected_prefix cdd6f4 --bold
+set -U fish_pager_color_selected_completion cdd6f4
+set -U fish_pager_color_selected_description a6adc8
+set -U fish_pager_color_secondary_background
+set -U fish_pager_color_background

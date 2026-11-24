@@ -46,6 +46,7 @@ width = 12
 position = "left"
 padding = [0, 0, 0, 0]
 
+# ---\ Modules /---
 
 [[modules]]
 description = "internet search"
@@ -64,6 +65,18 @@ umbriel msg window-set-secondary-extent 0.600;
 umbriel msg window-center;
 fsel --refresh-cache >/dev/null 2>&1;
 fsel -d
+"""
+
+# -- System management --
+
+[[modules]]
+description = "wifi"
+prefix = "wi"
+cmd = """
+umbriel msg window-set-primary-extent 0.365;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+wifitui
 """
 
 [[modules]]
@@ -86,31 +99,14 @@ umbriel msg window-center;
 wiremix
 """
 
-[[modules]]
-description = "wifi"
-prefix = "wi"
-cmd = """
-umbriel msg window-set-primary-extent 0.365;
-umbriel msg window-set-secondary-extent 0.600;
-umbriel msg window-center;
-wifitui
-"""
+
 [[modules]]
 description = "set power profile"
 prefix = "pp"
 cmd = "powerprofilesctl set {}"
 with_argument = true
 
-[[modules]]
-description = "Notes"
-prefix = "no"
-cmd = """
-umbriel msg window-set-primary-extent 0.6;
-umbriel msg window-set-secondary-extent 0.600;
-umbriel msg window-center;
-cd ~/Sync/Notes/;
-nvim
-"""
+# -- Nix management --
 
 [[modules]]
 description = "Nixos rebuild"
@@ -187,6 +183,24 @@ notify-send "nix fmt" "$(tail -n 3 /tmp/nix-fmt.log | sed -E 's/\x1b\\[[0-9;]*m/
 """
 
 [[modules]]
+description = "search nixpkgs"
+prefix = "ns"
+cmd = "xdg-open https://mynixos.com/search?q={}"
+with_argument = true
+url_encode = true
+unbind_proc = true
+
+[[modules]]
+description = "search nixwiki"
+prefix = "nw"
+cmd = "xdg-open https://wiki.nixos.org/w/index.php?search={}"
+with_argument = true
+url_encode = true
+unbind_proc = true
+
+# -- History --
+
+[[modules]]
 description = "clipboard history"
 prefix = "ch"
 cmd = """
@@ -194,6 +208,13 @@ umbriel msg window-set-primary-extent 0.365;
 umbriel msg window-set-secondary-extent 0.600;
 umbriel msg window-center;
 cliphist list | fsel --dmenu --delimiter $'\t' --with-nth 2 | cliphist decode | wl-copy >/dev/null 2>&1
+"""
+
+[[modules]]
+description = "clipboard history wipe"
+prefix = "chw"
+cmd = """
+cliphist wipe
 """
 
 [[modules]]
@@ -216,23 +237,7 @@ description = "toggle night light"
 prefix = "nl"
 cmd = "pkill -USR1 -x wlsunset"
 
-[[modules]]
-description = "fd file search"
-prefix = "fd"
-cmd = """
-umbriel msg window-set-primary-extent 0.365;
-umbriel msg window-set-secondary-extent 0.600;
-umbriel msg window-center;
-yazi "$(fd {} | fsel --dmenu --preview 'bat --color=never --style=numbers --paging=never --line-range=:200 -- "$FSEL_PREVIEW_ITEM"')"
-"""
-with_argument = true
-
-[[modules]]
-description = "clipboard history wipe"
-prefix = "chw"
-cmd = """
-cliphist wipe
-"""
+# -- Session management --
 
 [[modules]]
 description = "lock"
@@ -269,6 +274,8 @@ description = "suspend then hibernate"
 prefix = "sth"
 cmd = "systemctl suspend-then-hibernate"
 
+# -- Mullvad --
+
 [[modules]]
 description = "mullvad reconnect"
 prefix = "mr"
@@ -285,6 +292,13 @@ mullvad relay list | rg -o '[a-z]{2}-[a-z]{3}-wg-[0-9]+' | sort -u | fsel --dmen
 '''
 
 [[modules]]
+description = "cheatsheet"
+prefix = "che"
+cmd = "umbriel msg cheatsheet-toggle"
+
+# -- Cli tools --
+
+[[modules]]
 description = "run commands"
 prefix = "sh"
 cmd = """
@@ -294,25 +308,26 @@ with_argument = true
 unbind_proc = true
 
 [[modules]]
-description = "cheatsheet"
-prefix = "che"
-cmd = "umbriel msg cheatsheet-toggle"
+description = "fd file search"
+prefix = "fd"
+cmd = """
+umbriel msg window-set-primary-extent 0.365;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+yazi "$(fd {} | fsel --dmenu --preview 'bat --color=never --style=numbers --paging=never --line-range=:200 -- "$FSEL_PREVIEW_ITEM"')"
+"""
+with_argument = true
 
 [[modules]]
-description = "search nixpkgs"
-prefix = "ns"
-cmd = "xdg-open https://mynixos.com/search?q={}"
-with_argument = true
-url_encode = true
-unbind_proc = true
-
-[[modules]]
-description = "search nixwiki"
-prefix = "nw"
-cmd = "xdg-open https://wiki.nixos.org/w/index.php?search={}"
-with_argument = true
-url_encode = true
-unbind_proc = true
+description = "zoxide"
+prefix = "z"
+cmd = """
+umbriel msg window-set-primary-extent 0.365;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+umbriel msg window-toggle-pinned;
+zoxide query --interactive --score
+"""
 
 [[modules]]
 description = "yazi"
@@ -324,3 +339,26 @@ umbriel msg window-center;
 yazi {}
 """
 with_argument = true
+
+[[modules]]
+description = "man"
+prefix = "m"
+cmd = """
+umbriel msg window-set-primary-extent 0.365;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+umbriel msg window-toggle-pinned;
+man {}
+"""
+with_argument = true
+
+[[modules]]
+description = "Notes"
+prefix = "no"
+cmd = """
+umbriel msg window-set-primary-extent 0.6;
+umbriel msg window-set-secondary-extent 0.600;
+umbriel msg window-center;
+cd ~/Sync/Notes/;
+nvim
+"""

@@ -3,16 +3,16 @@
 <table align="center"><tr><td>
 <pre>
 <!-- onefetch:start -->
-         :::.    ':::::     ::::'          Project: Nix-conf (4 branches)
+         :::.    ':::::     ::::'          Project: Nix-conf (1 branch)
          '::::    ':::::.  ::::'           Created: 2 weeks ago
            ::::     '::::.:::::            Languages:                           
      ......:::::..... ::::::::                         Nix (94.3 %)  CSS (5.7 %)
-    :::::::::::::::::. ::::::    ::::.     Author: 100% sea 33
-   :::::::::::::::::::: :::::.  .::::'     Last change: 17 hours ago
-         .....           ::::' :::::'      Activity: ▁▁▁▁▁▁▁▁▁▁▁█ 33 commits (1y)
-        :::::            '::' :::::'       Commits: 33
- ......:::::               ' ::::::::::.   Lines of code: 2868
-:::::::::::                 ::::::::::::   Size: 750.16 KiB (123 files)
+    :::::::::::::::::. ::::::    ::::.     Author: 100% sea 34
+   :::::::::::::::::::: :::::.  .::::'     Last change: 6 hours ago
+         .....           ::::' :::::'      Activity: ▁▁▁▁▁▁▁▁▁▁▁█ 34 commits (1y)
+        :::::            '::' :::::'       Commits: 34
+ ......:::::               ' ::::::::::.   Lines of code: 2870
+:::::::::::                 ::::::::::::   Size: 750.87 KiB (123 files)
  ::::::::: ..              :::::           License: MIT
     .:::: .:::            :::::            
    .::::  :::::          '''''    .....                            

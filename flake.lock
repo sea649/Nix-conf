@@ -354,11 +354,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795118535,
-        "narHash": "sha256-FIb52zSw7IZwfPgZlDlrWPnToAnmShM/SzeCWHBg1v4=",
+        "lastModified": 1795541963,
+        "narHash": "sha256-/d4UI14Brgd9iInnV4DEnpopgrsnO8SB7k9GnZlyI7c=",
         "ref": "refs/heads/main",
-        "rev": "c7e4dcd0c5354a14a6e516e1cf208b7effa18203",
-        "revCount": 5,
+        "rev": "aacdc64b8df03dcc74656f4f08fec08feb6b45c2",
+        "revCount": 6,
         "type": "git",
         "url": "https://codeberg.org/SEA1111111/neovim-config"
       },

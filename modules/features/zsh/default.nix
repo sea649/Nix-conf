@@ -51,6 +51,7 @@
         pkgs.zoxide
         self'.packages.lazygit
         self'.packages.oh-my-posh
+        self'.packages.otter-launcher
         inputs'.neovim-conf.packages.default
       ];
 
@@ -62,12 +63,13 @@
         man = "man -P \"${lib.getExe pkgs.bat} -p\"";
         ni = "cd ~/Nix-conf/";
         niv = "cd ~/Nix-conf/ && nvim";
+        o = lib.getExe self'.packages.otter-launcher;
       };
 
       zshrc.content = ''
         eval "$(${lib.getExe self'.packages.oh-my-posh} init zsh)"
 
-        eval "$(${lib.getExe pkgs.zoxide} init zsh --cmd cd)"
+        eval "$(${lib.getExe pkgs.zoxide} init zsh)"
 
         source <(${lib.getExe pkgs.fzf} --zsh)
 

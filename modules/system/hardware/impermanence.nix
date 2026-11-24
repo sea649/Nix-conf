@@ -54,117 +54,123 @@
 
         files = ["/etc/machine-id"];
 
-        users.${cfg.username}.directories = [
-          # user data
-          "Nix-conf"
-          "Sync"
-          "Notes"
-          "Documents"
-          "Pictures"
-          "Music"
-          "Projects"
-          "wallpaper"
-          "neovim"
-          "org"
-          "Backups"
+        users.${cfg.username} = {
+          directories = [
+            # user data
+            "Nix-conf"
+            "Sync"
+            "Notes"
+            "Documents"
+            "Pictures"
+            "Music"
+            "Projects"
+            "wallpaper"
+            "neovim"
+            "org"
+            "Backups"
 
-          # secrets / identity
-          {
-            directory = ".ssh";
-            mode = "0700";
-          }
-          {
-            directory = ".gnupg";
-            mode = "0700";
-          }
-          {
-            directory = ".local/share/keyrings";
-            mode = "0700";
-          }
-          ".pki"
-          ".keys"
-          ".opencode"
-          ".config/age"
+            # secrets / identity
+            {
+              directory = ".ssh";
+              mode = "0700";
+            }
+            {
+              directory = ".gnupg";
+              mode = "0700";
+            }
+            {
+              directory = ".local/share/keyrings";
+              mode = "0700";
+            }
+            ".pki"
+            ".keys"
+            ".opencode"
+            ".config/age"
 
-          # browsers / profiles
-          ".librewolf"
-          ".config/librewolf"
-          ".config/net.imput.helium"
+            # browsers / profiles
+            ".librewolf"
+            ".config/librewolf"
+            ".config/net.imput.helium"
 
-          # installed app config
-          ".config/obsidian"
-          ".config/Blockbench"
-          ".config/thunderbird"
-          ".config/tutanota-desktop"
-          ".config/Mullvad VPN"
-          ".config/FreeTube"
-          ".config/heroic"
-          ".config/keepassxc"
-          ".config/obs-studio"
-          ".config/vesktop"
-          ".config/concord"
-          ".config/news-flash"
-          ".config/syncthing"
-          ".config/opencode"
+            # installed app config
+            ".config/obsidian"
+            ".config/Blockbench"
+            ".config/thunderbird"
+            ".config/tutanota-desktop"
+            ".config/Mullvad VPN"
+            ".config/FreeTube"
+            ".config/heroic"
+            ".config/keepassxc"
+            ".config/obs-studio"
+            ".config/vesktop"
+            ".config/concord"
+            ".config/news-flash"
+            ".config/syncthing"
+            ".config/opencode"
 
-          # editor / terminal / shell config
-          ".config/nvim"
-          ".config/nvf"
-          ".config/lazyvim"
-          ".config/nvim-personal"
-          ".config/SEA-neovim-config"
-          ".config/zellij"
-          ".local/share/zoxide"
-          ".local/state/fzf"
-          ".config/btop"
-          ".local/state/lazygit"
-          ".config/gh"
-          ".config/jj"
-          ".config/mpv"
-          ".config/Thunar"
-          ".config/luciole"
-          ".config/fuzzel"
-          ".local/state/yazi"
-          ".config/hypr"
-          ".config/dconf"
-          ".config/xdg-desktop-portal-wlr"
-          ".config/gtk-3.0"
-          ".config/gtk-4.0"
+            # editor / terminal / shell config
+            ".config/nvim"
+            ".config/nvf"
+            ".config/lazyvim"
+            ".config/nvim-personal"
+            ".config/SEA-neovim-config"
+            ".config/zellij"
+            ".local/share/zoxide"
+            ".local/state/fzf"
+            ".config/btop"
+            ".local/state/lazygit"
+            ".config/gh"
+            ".config/jj"
+            ".config/mpv"
+            ".config/Thunar"
+            ".config/luciole"
+            ".config/fuzzel"
+            ".local/state/yazi"
+            ".config/hypr"
+            ".config/dconf"
+            ".config/xdg-desktop-portal-wlr"
+            ".config/gtk-3.0"
+            ".config/gtk-4.0"
 
-          # application data
-          ".local/share/Steam"
-          ".steam"
-          ".local/share/applications"
-          ".local/share/opencode"
-          ".local/share/nvim"
-          ".local/share/nvf"
-          ".local/share/lazyvim"
-          ".local/share/nvim-personal"
-          ".local/share/SEA-neovim-config"
-          ".local/share/news-flash"
-          "/home/sea/.local/share/serein-development"
-          ".local/share/fractal"
-          ".local/share/iamb"
-          ".local/share/stremio"
-          ".local/share/zathura"
-          ".local/share/com.github.johnfactotum.Foliate"
-          ".local/share/PrismLauncher"
-          ".local/share/nix"
-          ".local/share/icons"
+            # application data
+            ".local/share/Steam"
+            ".steam"
+            ".local/share/applications"
+            ".local/share/opencode"
+            ".local/share/nvim"
+            ".local/share/nvf"
+            ".local/share/lazyvim"
+            ".local/share/nvim-personal"
+            ".local/share/SEA-neovim-config"
+            ".local/share/news-flash"
+            "/home/sea/.local/share/serein-development"
+            ".local/share/fractal"
+            ".local/share/iamb"
+            ".local/share/stremio"
+            ".local/share/zathura"
+            ".local/share/com.github.johnfactotum.Foliate"
+            ".local/share/PrismLauncher"
+            ".local/share/nix"
+            ".local/share/icons"
 
-          # runtime state
-          ".local/state/SEA-neovim-config/undo"
-          ".local/state/SEA-neovim-config/shada"
-          ".local/state/syncthing"
-          ".local/state/syncthing-versions"
-          ".local/state/opencode"
-          ".local/state/nordend"
-          ".local/state/luciole"
-          ".local/state/Heroic"
-          ".local/state/keepassxc"
-          ".local/state/nix"
-          ".local/state/zsh"
-        ];
+            # runtime state
+            ".local/state/SEA-neovim-config/undo"
+            ".local/state/SEA-neovim-config/shada"
+            ".local/state/syncthing"
+            ".local/state/syncthing-versions"
+            ".local/state/opencode"
+            ".local/state/nordend"
+            ".local/state/luciole"
+            ".local/state/Heroic"
+            ".local/state/keepassxc"
+            ".local/state/nix"
+            ".local/state/zsh"
+
+            # nix flake fetcher cache
+            ".cache/nix"
+          ];
+          files = [".local/state/SEA-neovim-config/trust"];
+        };
       };
 
       # Directories that must exist before sshd/agenix/users run.

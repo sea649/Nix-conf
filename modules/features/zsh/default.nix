@@ -61,9 +61,12 @@
         cat = lib.getExe pkgs.bat;
         lg = lib.getExe self'.packages.lazygit;
         man = "man -P \"${lib.getExe pkgs.bat} -p\"";
+        o = lib.getExe self'.packages.otter-launcher;
         ni = "cd ~/Nix-conf/";
         niv = "cd ~/Nix-conf/ && nvim";
-        o = lib.getExe self'.packages.otter-launcher;
+        nh-log = "bat /tmp/nh-switch.log";
+        gc-log = "bat /tmp/nix-gc.log";
+        update-log = "bat /tmp/flake-update.log";
       };
 
       zshrc.content = ''
@@ -95,6 +98,7 @@
         autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
         zle -N up-line-or-beginning-search
         zle -N down-line-or-beginning-search
+        bindkey -v
         bindkey "^[OA" up-line-or-beginning-search
         bindkey "^[OB" down-line-or-beginning-search
         bindkey "^[[A" up-line-or-beginning-search
@@ -103,6 +107,7 @@
         bindkey "^[[1;5C" forward-word
         bindkey "^[[1;5D" backward-word
         bindkey "^[[3;5~" kill-word
+        bindkey "^?" backward-delete-char
         bindkey "^H" backward-kill-word
 
         autoload -U select-word-style

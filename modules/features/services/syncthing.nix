@@ -6,9 +6,8 @@
   }: let
     hostName = config.dotfiles.hostname;
     home = config.dotfiles.homeDirectory;
-
     devices = {
-      steamdeck.id = "BGVIWJF-XKN67RA-UJC37YQ-EA7VOGD-EFCJ233-SHC7WVB-WVHBZ7J-2GH7WQQ";
+      steamdeck.id = "WCL7TL2-6ETVCHR-MHANPVG-VIKBAXN-FN77S6C-BHAHUAZ-2DJZW7K-NL3VYQT";
       laptop.id = "4QK6AWN-PDVV3HD-DNJ7OMT-TEK4ACF-K3NYTQV-S4EEIXE-OBBJH4X-CR5LQQ2";
       iphone.id = "3ASOP7Q-XL7QZC3-DA5HBVZ-6H62A3X-QF5OSN4-FSZNW3B-C3CDLPB-XAIZUAU";
     };

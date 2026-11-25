@@ -143,7 +143,7 @@
             ".local/share/nvim-personal"
             ".local/share/SEA-neovim-config"
             ".local/share/news-flash"
-            "/home/sea/.local/share/serein-development"
+            ".local/share/serein-development"
             ".local/share/fractal"
             ".local/share/iamb"
             ".local/share/stremio"
@@ -180,6 +180,7 @@
         "d ${persist}/passwords 0700 root root -"
         "d ${persist}/var/lib/private 0700 root root -"
         "d /var/lib/private 0700 root root -"
+        "d ${cfg.homeDirectory}/.cache 0700 ${cfg.username} ${config.users.users.${cfg.username}.group} -"
       ];
       systemd.services."systemd-tmpfiles-resetup".serviceConfig.RemainAfterExit =
         lib.mkForce false;
